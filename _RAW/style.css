@@ -1,0 +1,155 @@
+/* @group Base */
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #000;
+    margin: 0;
+}
+/* @end */
+
+/* @group Nav */
+.nav-top {
+    position: absolute;
+    width: 1000px;
+    height: 50px;
+    z-index: 5;
+    left: 50%;
+    margin-left: -500px;
+}
+
+.nav-top a {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    line-height: 50px;
+    height: 50px;
+    padding: 0 40px;
+}
+
+.nav-top a.active {
+    background: rgba(255, 255, 255, 0.5);
+}
+/* @end */
+
+/* @group Footer */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    position: fixed;
+    z-index: 5;
+}
+/* @end */
+
+/* @group Viewport */
+.cl-pane-content {
+    padding: 200px 0 50px;
+    color: #fff;
+    position: relative;
+}
+
+.cl-pane-content h1 {
+    font-size: 5em;
+    text-align: center;
+}
+/* @end */
+
+/* @group Viewport */
+.viewport {
+
+}
+
+.viewport .content-layer {
+    background: rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 2;
+    width: 1000px;
+    margin: 0 auto;
+    height: 1250px;
+}
+
+.viewport .cl-pane {
+    display: none;
+    opacity: 0;
+}
+
+.viewport .bg-layer {
+    overflow: hidden;
+    background: #000;
+    position: absolute;
+    top: 0;
+}
+
+.viewport .bg-layer > div {
+    background: #000 url(maslyakov_all.jpg) 0 0;
+    width: 4000px;
+    height: 4000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.viewport .animate-slow {
+    -webkit-transition: all 850ms cubic-bezier(0.405, 0.405, 0.400, 1); /* older webkit */
+    -webkit-transition: all 850ms cubic-bezier(0.405, 0.405, 0.400, 1.035);
+    -moz-transition: all 850ms cubic-bezier(0.405, 0.405, 0.400, 1.035);
+    -o-transition: all 850ms cubic-bezier(0.405, 0.405, 0.400, 1.035);
+    transition: all 850ms cubic-bezier(0.405, 0.405, 0.400, 1.035); /* custom */
+
+    -webkit-transition-timing-function: cubic-bezier(0.405, 0.405, 0.400, 1); /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.405, 0.405, 0.400, 1.035);
+    -moz-transition-timing-function: cubic-bezier(0.405, 0.405, 0.400, 1.035);
+    -o-transition-timing-function: cubic-bezier(0.405, 0.405, 0.400, 1.035);
+    transition-timing-function: cubic-bezier(0.405, 0.405, 0.400, 1.035); /* custom */
+}
+
+.viewport .animate-fast {
+    -webkit-transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1); /* older webkit */
+    -webkit-transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1.125);
+    -moz-transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1.125);
+    -o-transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1.125);
+    transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1.125); /* custom */
+
+    -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.125);
+    -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.125);
+    -o-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.125);
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.125); /* custom */
+}
+
+.viewport .animate-none {
+    -webkit-transition: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.viewport .rotate-N {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
+
+.viewport .rotate-E {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+.viewport .rotate-S {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+
+.viewport .rotate-W {
+    transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+}
+/* @end */

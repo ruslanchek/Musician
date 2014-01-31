@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>sdn</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>kcid</key>
+			<string>-2666399848347332470</string>
+			<key>name</key>
+			<string>local</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>cp1251</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK8QDwcIFRYXGBkfICEoLDA0OFUkbnVs
+			bNMJCgsMEBRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6MNDg+A
+			AoADgASjERITgAWABoAKgA5UdHlwZVRyb3dzVGtleXNfECZTZWxl
+			Y3Rpb25EZXRhaWxUeXBlUHJpbWFyeUtleWVkRGV0YWlsc9MJCgsa
+			HB6hG4AHoR2ACIAJUTEJ0iIjJCVaJGNsYXNzbmFtZVgkY2xhc3Nl
+			c18QE05TTXV0YWJsZURpY3Rpb25hcnmjJCYnXE5TRGljdGlvbmFy
+			eVhOU09iamVjdNIKCykroSqAC4AN0gstLi9ZTlMuc3RyaW5ngAxS
+			aWTSIiMxMl8QD05TTXV0YWJsZVN0cmluZ6MxMydYTlNTdHJpbmfS
+			IiM1Nl5OU011dGFibGVBcnJheaM1NydXTlNBcnJhedIiIyY5oiYn
+			XxAPTlNLZXllZEFyY2hpdmVy0Tw9VGRhdGGAAQAIABEAGgAjAC0A
+			MgA3AEkATwBWAF4AaQBwAHQAdgB4AHoAfgCAAIIAhACGAIsAkACV
+			AL4AxQDHAMkAywDNAM8A0QDSANcA4gDrAQEBBQESARsBIAEiASQB
+			JgErATUBNwE6AT8BUQFVAV4BYwFyAXYBfgGDAYYBmAGbAaAAAAAA
+			AAACAQAAAAAAAAA+AAAAAAAAAAAAAAAAAAABog==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {929, 481}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>DROP TABLE IF EXISTS `search`;
+CREATE TABLE `search` (
+  `url` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `referrer` text NOT NULL,
+  `title` text NOT NULL,
+  `text` mediumtext NOT NULL,
+  `md5` varchar(33) NOT NULL DEFAULT '',
+  `lastupdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `url` (`url`)
+) ENGINE=MyISAM AUTO_INCREMENT=362 DEFAULT CHARSET=cp1251;</string>
+			<key>table</key>
+			<string>search</string>
+			<key>view</key>
+			<string>SP_VIEW_CONTENT</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>323</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>CREATE TABLE `search` (
+  `url` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `referrer` text NOT NULL,
+  `title` text NOT NULL,
+  `text` mediumtext NOT NULL,
+  `md5` varchar(33) NOT NULL DEFAULT '',
+  `lastupdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `url` (`url`)
+) ENGINE=MyISAM AUTO_INCREMENT=362 DEFAULT CHARSET=cp1251</string>
+		<string>`form_item` = 'col_188'</string>
+		<string>SELECT * FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `type` = 1 ORDER BY `sort` ASC</string>
+		<string>SELECT * FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `form_item` = 'col_188' &amp;&amp; `type` = 1 ORDER BY `sort` ASC</string>
+		<string>SELECT * FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `relative_id` = 1 &amp;&amp; `form_item` = 'col_188' &amp;&amp; `type` = 1 ORDER BY `sort` ASC</string>
+		<string>SELECT `id`, `name`, `extension`, `path`, `date`, `size`, `width`, `height`, `metaname`, `metadesc` FROM `images`</string>
+		<string>SELECT `id`, `name`, `extension`, `path`, `date`, `size`, `width`, `height`, `metaname`, `metadesc` FROM `images` WHERE</string>
+		<string>SELECT `id`, `name`, `extension`, `path`, `date`, `size`, `width`, `height`, `metaname`, `metadesc` FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `relative_id` = 1 &amp;&amp; `form_item` = 'col_188' &amp;&amp; `type` = 1 ORDER BY `sort` ASC</string>
+		<string>SELECT `id`, `name`, `extension`, `path`, `date`, `size`, `width`, `height`, `metaname`, `metadesc` FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `relative_id` = 1 &amp;&amp; `form_item` = 'col_188' &amp;&amp; `type` = 1 ORDER BY `sort` ASC 1</string>
+		<string>SELECT * FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `relative_id` = 0 &amp;&amp; `form_item` = '1' &amp;&amp; `type` = 1 ORDER BY `sort` ASC</string>
+		<string>SELECT * FROM `images`</string>
+		<string>`sort` ASC</string>
+		<string>SELECT `id`, `name`, `extension`, `path`, `date`, `size`, `width`, `height`, `metaname`, `metadesc` FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `relative_id` = 0 &amp;&amp; `form_item` = '1' &amp;&amp; `type` = 1 ORDER BY `sort` ASC</string>
+		<string>SELECT `id`, `name`, `extension`, `path`, `date`, `size`, `width`, `height`, `metaname`, `metadesc` FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `relative_id` = 0 &amp;&amp; `form_item` = '1' &amp;&amp; `type` = 1 ORDER BY `sort` ASC 1</string>
+		<string>SELECT `id`, `name`, `extension`, `path`, `date`, `size`, `width`, `height`, `metaname`, `metadesc` FROM `images` WHERE `relative_table` = 'section_27' &amp;&amp; `relative_id` = 0 &amp;&amp; `form_item` = '1' &amp;&amp; `type` = 1</string>
+		<string>SELECT 
+`sd`.`id` AS `structure_id`, 
+`sd`.`name` AS `structure_name`, 
+`sd`.`path` AS `path`, 
+`sd`.`publish` AS `structure_publish`, 
+`d`.`col_132` AS `date`, 
+`d`.`id` AS `id`, 
+`d`.`name` AS `name`, 
+`d`.`name` AS `publish` 
+FROM `structure_data` `sd` 
+LEFT JOIN `section_19` `d` ON (`d`.`id` = `sd`.`content_id`) 
+WHERE `sd`.`mode` = 4 &amp;&amp; `sd`.`publish` = 1 &amp;&amp; `sd`.`content_id` &gt; 0 &amp;&amp; `d`.`publish` = 1
+ORDER BY `d`.`col_132` DESC LIMIT 6</string>
+		<string>SELECT 
+`sd`.`id` AS `structure_id`, 
+`sd`.`name` AS `structure_name`, 
+`sd`.`path` AS `path`, 
+`sd`.`publish` AS `structure_publish`, 
+`d`.`col_132` AS `date`, 
+`d`.`id` AS `id`, 
+`d`.`name` AS `name`, 
+`d`.`name` AS `publish` 
+FROM `structure_data` `sd` 
+LEFT JOIN `section_19` `d` ON (`d`.`id` = `sd`.`content_id`) 
+WHERE `sd`.`mode` = 3 &amp;&amp; `sd`.`publish` = 1 &amp;&amp; `sd`.`content_id` &gt; 0 &amp;&amp; `d`.`publish` = 1
+ORDER BY `d`.`col_132` DESC LIMIT 6</string>
+		<string>SELECT 
+`sd`.`id` AS `structure_id`, 
+`sd`.`name` AS `structure_name`, 
+`sd`.`path` AS `path`, 
+`sd`.`publish` AS `structure_publish`, 
+`d`.`col_132` AS `date`, 
+`d`.`id` AS `id`, 
+`d`.`name` AS `name`, 
+`d`.`name` AS `publish` 
+FROM `structure_data` `sd` 
+LEFT JOIN `section_19` `d` ON (`d`.`id` = `sd`.`content_id`) 
+WHERE `sd`.`mode` = 3 &amp;&amp; `sd`.`publish` = 1 &amp;&amp; `sd`.`content_id` &gt; 0 &amp;&amp; `d`.`publish` = 1 &amp;&amp; `col_166` = 2 
+ORDER BY `d`.`col_132` DESC LIMIT 6</string>
+		<string>`sd`.`pid` = 1 &amp;&amp;</string>
+		<string>3</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.33</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

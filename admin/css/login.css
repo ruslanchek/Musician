@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #262626 url(../img/bg/pattern.png) 0 0;
+
+    font-family: Arial;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+}
+
+.logo {
+    width: 333px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    margin: 0 0 0 -166px;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    min-height: 700px;
+    height: 100%;
+}
+
+.logo img {
+    display: block;
+    width: 100%;
+}
+
+.login-form-block {
+    background: rgba(50, 50, 50, 0.75);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow:  -5px 5px 0px 0px rgba(0, 0, 0, 0.15);
+    box-shadow:  -5px 5px 0px 0px rgba(0, 0, 0, 0.15);
+    padding: 35px;
+    width: 400px;
+    top: 360px;
+    left: 50%;
+    position: absolute;
+    margin: 0 0 0 -235px;
+    color: #fff;
+    z-index: 2;
+}
+
+.login-form-block .error {
+    margin: 0 0 1em;
+    color: rgba(255, 50, 80, 0.8);
+}
+
+.login-form-block .textinput {
+    background: #fff;
+    padding: 8px 10px;
+    font-size: 18px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    display: block;
+    width: 378px;
+    border: none;
+    margin: 0 0 25px;
+    outline: none;
+}
+
+.login-form-block .textinput:focus {
+    -webkit-box-shadow: 0 2px 30px 0px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 2px 30px 0px rgba(255, 255, 255, 0.35);
+}
+
+.button {
+    border: none;
+    font-size: 18px;
+    height: 38px;
+    line-height: 38px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 3ex;
+    text-align: center;
+    text-shadow: -2px 2px 0px rgba( 0, 0, 0, 0.1 );
+    font-family: Arial;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    outline: none;
+}
+
+.button:active {
+    line-height: 40px;
+}
+
+.button.blue {
+    color: #fff;
+    background: #3498db; /* Old browsers */
+}
+
+.button.blue:hover {
+    background: #4ea0d7; /* Old browsers */
+}
+
+.button.blue:active {
+    background: #186faa; /* Old browsers */
+}
+
+label.checkbox {
+    position: absolute;
+    left: 160px;
+    margin-top: 10px;
+    cursor: help;
+}
+
+label.checkbox input {
+    margin-right: 4px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    width: 470px;
+    padding: 0;
+    left: 50%;
+    margin: 0 0 0 -235px;
+    opacity: 0.25;
+    text-align: center;
+    line-height: 1.6em;
+}
+
+.footer em {
+    font-size: 0.9em;
+    color: #eee;
+}
