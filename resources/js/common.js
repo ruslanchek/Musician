@@ -282,78 +282,115 @@ modules.media = {
     }
 };
 
+modules.music = {
+    player: null,
 
+    setupPlayer: function(){
+        this.player = $("#jquery_jplayer_1").jPlayer({
+            ready: function (event) {
 
-/*$(document).ready(function () {
+            },
+            play: function(){
+                modules.music.onPlay();
+            },
+            pause: function(){
+                modules.music.onStop();
+            },
+            swfPath: "js",
+            supplied: "m4a, oga, mp3",
+            wmode: "window",
+            smoothPlayBar: true,
+            keyEnabled: true
+        });
+    },
 
-	$('.social-list .social-block-item').click(function(){
-		$(this).parent().fadeOut(200);
-		$(this).parent().parent().find('.social-item-open').fadeIn(200);
-	});
-	
-	$('.social-item-open .close').click(function(){
-		$(this).parent().fadeOut(200);
-		$(this).parent().parent().find('.social-list').fadeIn(200);
-	});
-	
-	$('#instruments .instruments-preview .instruments-preview-item').click(function(){
-		$(this).parents('#instruments').find('.video-view-descr').fadeOut(200);
-		$(this).parents('#instruments').find('.full-descr').fadeIn(200);
-	});
-	
-	$('#instruments .full-descr .close').click(function(){
-		$(this).parents('#instruments').find('.full-descr').fadeOut(200);
-		$(this).parents('#instruments').find('.video-view-descr').fadeIn(200);
-	});
-	
-	$('.main-menu .pane-toggler').click(function(){
-		if($(this).data('pane') == 'media') {
-            photoInit();
-		}
-	});
-	
-		// photoInit();
-	setTimeout(function () {
-		photoInit();
-	}, 500);
-	
-	function photoInit() {
-		setTimeout(function () {
-			$('#photo').masonry({
-			// указываем элемент-контейнер в котором расположены блоки для динамической верстки
-			  itemSelector: '.item',
-				// указываем класс элемента являющегося блоком в нашей сетке
-				  singleMode: false,
-					// true - если у вас все блоки одинаковой ширины
-			  isResizable: true,
-				// перестраивает блоки при изменении размеров окна
-			  isAnimated: true,
-				// анимируем перестроение блоков
-				  animationOptions: { 
-				  queue: false, 
-				  duration: 500 
-			  }
-				// опции анимации - очередь и продолжительность анимации
-			}); 	
-		}, 1500);
-	}
+    onPlay: function(){
+        $('.large-play-button').addClass('rotating');
+    },
 
-	$("#jquery_jplayer_1").jPlayer({
-		ready: function (event) {
-			$(this).jPlayer("setMedia", {
-				m4a:"http://www.jplayer.org/audio/m4a/TSP-01-Cro_magnon_man.m4a",
-				oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg"
-			});
-		},
-		swfPath: "js",
-		supplied: "m4a, oga",
-		wmode: "window",
-		smoothPlayBar: true,
-		keyEnabled: true
-	});
-	
-});
-*/
+    onStop: function(){
+        $('.large-play-button').removeClass('rotating');
+    },
+
+    play: function(){
+        this.player.jPlayer('play');
+    },
+
+    stop: function(){
+        this.player.jPlayer('stop');
+    },
+
+    setTrack: function(id){
+        var $item = $('#tracks .item[data-id="' + id + '"]');
+
+        $('#tracks .item').removeClass('selected');
+        $item.addClass('selected');
+
+        $('#current-track-name').html($item.data('name'));
+        $('#current-track-album').html($item.data('album_name'));
+
+        this.player.jPlayer("setMedia", {
+            mp3: $item.data('file')
+        });
+    },
+
+    loadItems: function(page){
+        var album = 1;
+
+        $.ajax({
+            url: '/?ajax',
+            data: {
+                action: 'getTracks',
+                page: page,
+                album: album
+            },
+            beforeSend: function(){
+                common.setGlobalLoading('music');
+            },
+            success: function(data){
+                var $nc = $('#tracks');
+
+                $nc.html(
+                    Handlebars.compile($("#music-list-items").html())({
+                        items: data.items
+                    })
+                );
+
+                common.unSetGlobalLoading('music');
+
+                setTimeout(function(){
+                    common.iterateObjects('#tracks .item', 75, function($this){
+                        $this.addClass('ready');
+                    });
+                }, 400); // Delay to avoid loading animation intersection
+
+                $('#tracks .item').off('click').on('click', function(e){
+                    e.preventDefault();
+                    modules.music.setTrack($(this).data('id'));
+                    modules.music.play();
+                });
+
+                if(data.items[0]){
+                    modules.music.setTrack(data.items[0].id);
+                }
+
+                common.generatePager({
+                    selector: '#music-pager',
+                    total_pages: data.pager.total_pages,
+                    current_page: page,
+                    onSelect: function(page){
+                        modules.music.loadItems(page);
+                    }
+                });
+            }
+        });
+    },
+
+    init: function(){
+        this.setupPlayer();
+        this.loadItems(1);
+    }
+};
 
 $(function(){
     common.init();

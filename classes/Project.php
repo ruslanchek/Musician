@@ -28,6 +28,11 @@ Class Project extends Utilities
                     header('Content-type: application/json');
                     print json_encode( $this->getMedia($_GET['page']) );
                 } break;
+
+                case 'getTracks' : {
+                    header('Content-type: application/json');
+                    print json_encode( $this->getTracks($_GET['album'], $_GET['page']) );
+                } break;
             };
 
             exit;
@@ -92,5 +97,31 @@ Class Project extends Utilities
             LIMIT " . intval($limit);
 
         return $this->db->assocItem($query);
+    }
+
+    private function getTracks($album_id, $page){
+        return $this->getSectionContent(
+            'section_34 d',
+            array(
+                'd.id',
+                'd.name',
+                array('f.path', 'f_path'),
+                array('f.name', 'f_name'),
+                array('f.extension', 'f_extension'),
+                array('d.col_226', 'rate'),
+                array('d.col_228', 'last'),
+                array('d.col_236', 'duration'),
+                array('a.name', 'album_name'),
+                array('d.col_234', 'album')
+            ),
+            'd.publish = 1 && d.col_234 = ' . intval($album_id),
+            array('d.sort', 'ASC'),
+            7,
+            $page,
+            "
+                LEFT JOIN files f ON (f.relative_table = 'section_34' && f.relative_id = d.id && f.form_item = 'col_225' && f.type = 0)
+                LEFT JOIN section_35 a ON (a.id = d.col_234)
+            "
+        );
     }
 }
