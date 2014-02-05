@@ -386,9 +386,46 @@ modules.music = {
         });
     },
 
+    selectVideo: function(id){
+        var $item = $('.video-preview .video-preview-item[data-id="' + id + '"]');
+
+        $('.video-preview .video-preview-item').removeClass('current-item');
+        $item.addClass('current-item');
+
+        $('#current-video-description').html($item.data('description'));
+        $('#current-video-duration').html($item.data('duration'));
+        $('#current-video-img').attr('src', $item.data('img'));
+        $('#current-video-name').html($item.data('name'));
+    },
+
+    binds: function(){
+        $('.video-preview .video-preview-item').on('click', function(e){
+            modules.music.selectVideo($(this).data('id'));
+
+            e.preventDefault();
+        });
+    },
+
     init: function(){
         this.setupPlayer();
         this.loadItems(1);
+        this.binds();
+    }
+};
+
+modules.instruments = {
+    init: function(){
+        $('#instruments .instruments-preview .instruments-preview-item').click(function(e){
+            e.preventDefault();
+            $(this).parents('#instruments').find('.video-view-descr').fadeOut();
+            $(this).parents('#instruments').find('.full-descr').fadeIn();
+        });
+
+        $('#instruments .full-descr .close').click(function(e){
+            e.preventDefault();
+            $(this).parents('#instruments').find('.full-descr').fadeOut();
+            $(this).parents('#instruments').find('.video-view-descr').fadeIn();
+        });
     }
 };
 

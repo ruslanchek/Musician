@@ -124,4 +124,24 @@ Class Project extends Utilities
             "
         );
     }
+
+    public function getVideos(){
+        $query = "
+            SELECT
+                `id`,
+                `name`,
+                `col_241` AS `description`,
+                `col_240` AS `code`,
+                `col_242` AS `duration`
+            FROM
+                `section_36`
+            WHERE
+                `publish` = 1
+            ORDER BY
+                `sort`
+            ASC
+        ";
+
+        return $this->db->assocMulti($query);
+    }
 }

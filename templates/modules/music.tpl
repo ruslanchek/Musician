@@ -1,76 +1,47 @@
+{$videos = $core->getVideos()}
+
 <div class="cl-pane-content">
     <div class="video-player">
         <div class="video-view">
+            {$image = $core->getItemSingleImage('section_36', $videos[0].id, 'col_243')}}
+
             <a class="video-play-button" href="#"></a>
-            <img src="trash/video-preview.png"/>
+            <img id="current-video-img" src="{$image.path}{$image.name}.{$image.extension}" width="453" height="345" />
 
             <div class="video-view-descr">
-                <h6>Walden/Майрон Уэлден</h6>
+                <h6 id="current-video-name">{$videos[0].name}</h6>
 
-                <p>Майами<span class="track-time">3:52</span></p>
+                <p>
+                    <span id="current-video-description">{$videos[0].description}</span>
+                    <span id="current-video-duration" class="track-time">{$videos[0].duration}</span>
+                </p>
             </div>
         </div>
+
         <div class="video-preview">
-            <div class="video-preview-item current-item">
-                <img src="trash/video/1.jpg"/>
+            {foreach from=$videos name=videos item=item}
+                {$image = $core->getItemSingleImage('section_36', $item.id, 'col_243')}
 
-                <div class="video-view-descr">
-                    <h6>Myron Walden/Майрон</h6>
+                <div
+                    data-description="{$item.description}"
+                    data-name="{$item.name}"
+                    data-duration="{$item.duration}"
+                    data-id="{$item.id}"
+                    data-img="{$image.path}{$image.name}.{$image.extension}"
+                    class="video-preview-item{if $smarty.foreach.videos.first} current-item{/if}">
 
-                    <p>
-                        Побережье
-                        <span class="track-time">3:52</span>
-                    </p>
+                    <img src="{$image.path}{$image.name}_pic.{$image.extension}"/>
+
+                    <div class="video-view-descr">
+                        <h6>{$item.name}</h6>
+
+                        <p>
+                            {$item.description}
+                            <span class="track-time">{$item.duration}</span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="video-preview-item">
-                <img src="trash/video/2.jpg"/>
-
-                <div class="video-view-descr">
-                    <h6>Myron Walden/Майрон</h6>
-
-                    <p>
-                        Побережье
-                        <span class="track-time">3:52</span>
-                    </p>
-                </div>
-            </div>
-            <div class="video-preview-item">
-                <img src="trash/video/3.jpg"/>
-
-                <div class="video-view-descr">
-                    <h6>Myron Walden/Майрон 3</h6>
-
-                    <p>
-                        Побережье
-                        <span class="track-time">3:52</span>
-                    </p>
-                </div>
-            </div>
-            <div class="video-preview-item">
-                <img src="trash/video/4.jpg"/>
-
-                <div class="video-view-descr">
-                    <h6>Myron Walden/Майрон 4</h6>
-
-                    <p>
-                        Побережье
-                        <span class="track-time">3:52</span>
-                    </p>
-                </div>
-            </div>
-            <div class="video-preview-item">
-                <img src="trash/video/5.jpg"/>
-
-                <div class="video-view-descr">
-                    <h6>Myron Walden/Майрон 5</h6>
-
-                    <p>
-                        Побережье
-                        <span class="track-time">3:52</span>
-                    </p>
-                </div>
-            </div>
+            {/foreach}
         </div>
     </div>
 

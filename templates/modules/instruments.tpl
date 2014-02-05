@@ -1,46 +1,46 @@
 <div class="cl-pane-content">
     <div class="instrument-item instrument1">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/1.png"/>
+            <img src="/resources/data/instruments/1.png"/>
         </div>
     </div>
     <div class="instrument-item instrument2">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/2.png"/>
+            <img src="/resources/data/instruments/2.png"/>
         </div>
     </div>
     <div class="instrument-item instrument3">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/3.png"/>
+            <img src="/resources/data/instruments/3.png"/>
         </div>
     </div>
     <div class="instrument-item instrument4">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/4.png"/>
+            <img src="/resources/data/instruments/4.png"/>
         </div>
     </div>
     <div class="instrument-item instrument-small instrument5">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/5.png"/>
+            <img src="/resources/data/instruments/5.png"/>
         </div>
     </div>
     <div class="instrument-item instrument-small instrument6">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/6.png"/>
+            <img src="/resources/data/instruments/6.png"/>
         </div>
     </div>
     <div class="instrument-item instrument-small instrument7">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/7.png"/>
+            <img src="/resources/data/instruments/7.png"/>
         </div>
     </div>
     <div class="instrument-item instrument-small instrument8">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/8.png"/>
+            <img src="/resources/data/instruments/8.png"/>
         </div>
     </div>
     <div id="instruments">
-        <img src="trash/instruments/1.jpg"/>
+        <img src="/resources/data/instruments/1.jpg"/>
 
         <div class="video-view-descr">
             <h6>Труба Bravura</h6>
@@ -49,22 +49,22 @@
 
             <div class="instruments-preview">
                 <div class="instruments-preview-item">
-                    <img src="trash/instruments/1_thumb.jpg"/>
+                    <img src="/resources/data/instruments/1_thumb.jpg"/>
                 </div>
                 <div class="instruments-preview-item">
-                    <img src="trash/instruments/2_thumb.jpg"/>
+                    <img src="/resources/data/instruments/2_thumb.jpg"/>
                 </div>
                 <div class="instruments-preview-item">
-                    <img src="trash/instruments/3_thumb.jpg"/>
+                    <img src="/resources/data/instruments/3_thumb.jpg"/>
                 </div>
                 <div class="instruments-preview-item">
-                    <img src="trash/instruments/4_thumb.jpg"/>
+                    <img src="/resources/data/instruments/4_thumb.jpg"/>
                 </div>
                 <div class="instruments-preview-item">
-                    <img src="trash/instruments/5_thumb.jpg"/>
+                    <img src="/resources/data/instruments/5_thumb.jpg"/>
                 </div>
                 <div class="instruments-preview-item">
-                    <img src="trash/instruments/6_thumb.jpg"/>
+                    <img src="/resources/data/instruments/6_thumb.jpg"/>
                 </div>
             </div>
         </div>
