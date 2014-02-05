@@ -88,7 +88,7 @@ class qqFileUploader{
         $this->form_item = $form_item;
 
         $this->allowedExtensions = $allowedExtensions;
-        $this->sizeLimit = $sizeLimit;
+        $this->sizeLimit = $this->sizeLimit * 60;
 
         $this->copies_params_str = $copies_params_str;
 
@@ -362,7 +362,7 @@ if($login->active){
     $allowedExtensions = array();
 
     // max file size in bytes
-    $sizeLimit = 50 * 1024 * 1024;
+    $sizeLimit = 500 * 1024 * 1024;
 
     $uploader = new qqFileUploader(
         $allowedExtensions,
@@ -389,4 +389,3 @@ if($login->active){
     // to pass data through iframe you will need to encode all html tags
     echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 };
-?>

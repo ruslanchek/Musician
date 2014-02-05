@@ -1010,6 +1010,14 @@ a.jp-volume-max:hover {
 	overflow: hidden;
 }
 
+.video-view .video-player-splash {
+    position: absolute;
+    width: 453px;
+    height: 345px;
+    top: 0;
+    left: 0;
+}
+
 .video-view img {
 	height: 100%;
 }
@@ -1151,6 +1159,41 @@ a.jp-volume-max:hover {
 	width: 300px;
 	text-overflow: ellipsis;
 	white-space: nowrap;	
+}
+
+.video-player-viewport {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 453px;
+    height: 345px;
+    z-index: 4;
+    border-radius: 30px 10px 30px 30px;
+}
+
+.video-player-viewport video {
+    border-radius: 30px 10px 30px 30px;
+}
+
+.vjs-default-skin .vjs-control-bar {
+    border-radius: 0 0 30px 30px;
+}
+
+.vjs-big-play-button {
+    display: none !important;
+}
+
+.video-player-viewport .video-js {
+    display: none;
+}
+
+.video-player-splash {
+    z-index: 5;
+    border-radius: 30px 10px 30px 30px;
+}
+
+.video-player-splash img {
+    border-radius: 30px 10px 30px 30px;
 }
 
 .viewport .instrument-block.cl-pane {

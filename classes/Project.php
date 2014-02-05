@@ -128,17 +128,28 @@ Class Project extends Utilities
     public function getVideos(){
         $query = "
             SELECT
-                `id`,
-                `name`,
-                `col_241` AS `description`,
-                `col_240` AS `code`,
-                `col_242` AS `duration`
+                d.`id`,
+                d.`name`,
+                d.`col_241` AS `description`,
+                d.`col_242` AS `duration`,
+
+                f1.path AS mp4_path,
+                f1.name AS mp4_name,
+                f1.extension AS mp4_extension,
+
+                f2.path AS webm_path,
+                f2.name AS webm_name,
+                f2.extension AS webm_extension
             FROM
-                `section_36`
+                `section_36` d
+            LEFT JOIN
+                files f1 ON (f1.relative_table = 'section_36' && f1.relative_id = d.id && f1.form_item = 'col_246' && f1.type = 0)
+            LEFT JOIN
+                files f2 ON (f2.relative_table = 'section_36' && f2.relative_id = d.id && f2.form_item = 'col_247' && f2.type = 0)
             WHERE
-                `publish` = 1
+                d.`publish` = 1
             ORDER BY
-                `sort`
+                d.`sort`
             ASC
         ";
 

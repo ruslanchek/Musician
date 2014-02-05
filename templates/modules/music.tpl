@@ -3,18 +3,40 @@
 <div class="cl-pane-content">
     <div class="video-player">
         <div class="video-view">
-            {$image = $core->getItemSingleImage('section_36', $videos[0].id, 'col_243')}}
+            {$image = $core->getItemSingleImage('section_36', $videos[0].id, 'col_243')}
 
-            <a class="video-play-button" href="#"></a>
-            <img id="current-video-img" src="{$image.path}{$image.name}.{$image.extension}" width="453" height="345" />
+            <div class="video-player-splash">
+                <a class="video-play-button" href="#" data-id="{$videos[0].id}"></a>
+                <img id="current-video-img" src="{$image.path}{$image.name}.{$image.extension}" width="453" height="345" />
 
-            <div class="video-view-descr">
-                <h6 id="current-video-name">{$videos[0].name}</h6>
+                <div class="video-view-descr">
+                    <h6 id="current-video-name">{$videos[0].name}</h6>
 
-                <p>
-                    <span id="current-video-description">{$videos[0].description}</span>
-                    <span id="current-video-duration" class="track-time">{$videos[0].duration}</span>
-                </p>
+                    <p>
+                        <span id="current-video-description">{$videos[0].description}</span>
+                        <span id="current-video-duration" class="track-time">{$videos[0].duration}</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-player-viewport">
+                {foreach from=$videos name=videos item=item}
+                    {$image = $core->getItemSingleImage('section_36', $item.id, 'col_243')}
+
+                    <video {if $smarty.foreach.videos.first}style="display: block"{/if}
+                           id="video_{$item.id}"
+                           class="video-js vjs-default-skin"
+                           controls
+                           preload="auto"
+                           width="453"
+                           height="345"
+                           poster="{$image.path}{$image.name}.{$image.extension}"
+                           data-id="{$item.id}"
+                           data-setup="">
+                        <source src="{$item.mp4_path}{$item.mp4_name}.{$item.mp4_extension}" type='video/mp4'>
+                        <source src="{$item.webm_path}{$item.webm_name}.{$item.webm_extension}" type='video/webm'>
+                    </video>
+                {/foreach}
             </div>
         </div>
 

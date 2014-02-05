@@ -30,3 +30,12 @@
 
 <script src="/resources/js/common.js"></script>
 <script src="/resources/js/engine.js"></script>
+
+<link href="http://vjs.zencdn.net/4.3/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/4.3/video.js"></script>
+<style type="text/css">
+    .vjs-default-skin { color: #ffc900; }
+    .vjs-default-skin .vjs-play-progress,
+    .vjs-default-skin .vjs-volume-level { background-color: #ffc900 }
+    .vjs-default-skin .vjs-control-bar { font-size: 115% }
+</style>

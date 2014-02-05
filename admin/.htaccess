@@ -13,8 +13,8 @@ AddCharset utf-8 *
 	RewriteRule ^(.*)$ /admin/index.php [QSA,L]
 </IfModule>
 
-php_flag post_max_filesize 10M
-php_flag upload_max_filesize 10M
-php_value upload_max_filesize 10M
+php_flag post_max_filesize 600M
+php_flag upload_max_filesize 600M
+php_value upload_max_filesize 600M
 
-php_value memory_limit 64M
+php_value memory_limit 256M
