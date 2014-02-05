@@ -33,6 +33,11 @@ Class Project extends Utilities
                     header('Content-type: application/json');
                     print json_encode( $this->getTracks($_GET['album'], $_GET['page']) );
                 } break;
+
+                case 'setTrackRate' : {
+                    header('Content-type: application/json');
+                    print json_encode( $this->setTrackRate($_GET['id'], $_GET['act']) );
+                } break;
             };
 
             exit;
@@ -123,6 +128,57 @@ Class Project extends Utilities
                 LEFT JOIN section_35 a ON (a.id = d.col_234)
             "
         );
+    }
+
+    private function checkTrackRated($id){
+        $query = "
+            SELECT count(id) AS `count`
+            FROM tracks_rated
+            WHERE track_id = " . intval($id) . " && `ip` = '" . $this->db->quote($_SERVER['REMOTE_ADDR']) ."'";
+
+        $result = $this->db->assocItem($query);
+
+        if($result['count'] <= 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private function setTrackRate($id, $action){
+        if(!$this->checkTrackRated($id)){
+            return (object) array('status' => false, 'message' => 'Вы уже оценили этот трек');
+        }
+
+        if($action == 'up'){
+            $act = ' + 1';
+            $last = '+';
+        }else{
+            $act = ' - 1';
+            $last = '–';
+        }
+
+        $query = "
+            UPDATE
+                section_34
+            SET
+                col_226 = col_226 " . $this->db->quote($act) . ",
+                col_228 = '" . $this->db->quote($last) . "'
+            WHERE
+                id = " . intval($id);
+
+        $this->db->query($query);
+
+        $query = "
+            INSERT
+                tracks_rated
+            SET
+                track_id = " . intval($id). ", ip = '" . $this->db->quote($_SERVER['REMOTE_ADDR']) . "'
+        ";
+
+        $this->db->query($query);
+
+        return (object) array('status' => true, 'message' => 'Спасибо!');
     }
 
     public function getVideos(){

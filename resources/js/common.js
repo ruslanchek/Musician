@@ -334,6 +334,41 @@ modules.music = {
         });
     },
 
+    rateTrack: function($act){
+        var id = $act.data('id'),
+            act = $act.data('action');
+
+        $.ajax({
+            url: '/?ajax',
+            data: {
+                action: 'setTrackRate',
+                act: act,
+                id: id
+            },
+            success: function(data){
+                if(data.status == true){
+                    var $rating_cell = $('.track_rate_index[data-id="' + id + '"]'),
+                        val = 0,
+                        act_class = '';
+
+                    if(act == 'up'){
+                        val = +1;
+                        act_class = 'arrow-top';
+                    }else{
+                        val = -1;
+                        act_class = 'arrow-bottom';
+                    }
+
+                    $rating_cell.html($rating_cell.data('rate') + val);
+
+                    $('.track_rate_last_act[data-id="' + id + '"]').removeClass('arrow-top arrow-bottom').addClass(act_class);
+                }else{
+                    alert(data.message);
+                }
+            }
+        });
+    },
+
     loadItems: function(page){
         var album = 1;
 
@@ -350,6 +385,16 @@ modules.music = {
             success: function(data){
                 var $nc = $('#tracks');
 
+                for(var i = 0, l = data.items.length; i < l; i++){
+                    if(data.items[i].last == '+'){
+                        data.items[i].classname = 'arrow-top';
+                    }else if(data.items[i].last == '–'){
+                        data.items[i].classname = 'arrow-bottom';
+                    }else{
+                        data.items[i].classname = '';
+                    }
+                }
+
                 $nc.html(
                     Handlebars.compile($("#music-list-items").html())({
                         items: data.items
@@ -364,10 +409,20 @@ modules.music = {
                     });
                 }, 400); // Delay to avoid loading animation intersection
 
-                $('#tracks .item').off('click').on('click', function(e){
+                $('#tracks .item>a').off('click').on('click', function(e){
                     e.preventDefault();
                     modules.music.setTrack($(this).data('id'));
                     modules.music.play();
+                });
+
+                $('#tracks .item .plus').off('click').on('click', function(e){
+                    e.preventDefault();
+                    modules.music.rateTrack($(this));
+                });
+
+                $('#tracks .item .minus').off('click').on('click', function(e){
+                    e.preventDefault();
+                    modules.music.rateTrack($(this));
                 });
 
                 if(data.items[0]){

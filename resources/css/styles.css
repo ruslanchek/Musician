@@ -837,6 +837,8 @@ a.jp-volume-max:hover {
 	text-transform: uppercase;
 }
 
+
+
 .track-time,
 .jp-duration {
 	display: block;
@@ -848,6 +850,34 @@ a.jp-volume-max:hover {
 .value {
 	font: 18px/20px 'franklingothicbookxcmpBkxcmpc';
 	color: #ece6da;
+    position: relative;
+}
+
+.value .plus,
+.value .minus {
+    font-family: Arial;
+    position: absolute;
+    top: 0;
+    font-size: 12px;
+    display: none;
+}
+
+.value .plus:hover,
+.value .minus:hover {
+    color: yellow;
+}
+
+.value .plus {
+    right: -14px;
+}
+
+.value .minus {
+    left: -14px;
+}
+
+.audio-player p:hover .value .plus,
+.audio-player p:hover .value .minus {
+    display: block;
 }
 
 .arrow-top:before {
@@ -859,17 +889,6 @@ a.jp-volume-max:hover {
 	height: 17px;
 	margin-right: 1px;
 	background: url('../img/social-icons.png') no-repeat -110px -50px;
-}
-
-.minus:before {
-	content: '';
-	display: inline-block;
-	position: relative;
-	top: 3px;
-	width: 10px;
-	height: 17px;
-	margin-right: 2px;
-	background: url('../img/social-icons.png') no-repeat -120px -50px;
 }
 
 .arrow-bottom:before {
@@ -932,6 +951,7 @@ a.jp-volume-max:hover {
 
 .audio-list .audio-title {
 	position: relative;
+    margin-right: 45px;
 }
 
 .audio-list .audio-title:before {

@@ -123,7 +123,12 @@
     <script id="music-list-items" type="text/x-handlebars-template">
         {{#each items}}
         <p class="item" data-id="{{this.id}}" data-name="{{this.name}}" data-album="{{this.album}}" data-album_name="{{this.album_name}}" data-length="{{this.duration}}" data-rate="{{this.rate}}" data-file="{{this.f_path}}{{this.f_name}}.{{this.f_extension}}">
-            <span class="value arrow-top">{{this.rate}}</span>
+            <span class="track_rate_last_act value {{this.classname}}" data-id="{{this.id}}">
+                <span data-id="{{this.id}}" data-rate="{{this.rate}}" class="track_rate_index">{{this.rate}}</span>
+                <a data-id="{{this.id}}" data-action="up" class="plus" href="#">+</a>
+                <a data-id="{{this.id}}" data-action="down" class="minus" href="#">&minus;</a>
+            </span>
+
             <a data-id="{{this.id}}" class="audio-title" href="#">{{this.name}}</a>
             <span class="track-time">{{this.duration}}</span>
         </p>
