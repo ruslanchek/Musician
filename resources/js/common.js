@@ -329,6 +329,16 @@ modules.music = {
         $('#current-track-name').html($item.data('name'));
         $('#current-track-album').html($item.data('album_name'));
 
+        var act_class = '';
+
+        if($item.data('last') == '–'){
+            act_class = 'arrow-bottom';
+        }else{
+            act_class = 'arrow-top';
+        }
+
+        $('#current-track-rating').html($item.data('rate')).removeClass('arrow-top arrow-bottom').addClass(act_class);
+
         this.player.jPlayer("setMedia", {
             mp3: $item.data('file')
         });
