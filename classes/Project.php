@@ -121,7 +121,7 @@ Class Project extends Utilities
             ),
             'd.publish = 1 && d.col_234 = ' . intval($album_id),
             array('d.sort', 'ASC'),
-            7,
+            6,
             $page,
             "
                 LEFT JOIN files f ON (f.relative_table = 'section_34' && f.relative_id = d.id && f.form_item = 'col_225' && f.type = 0)
