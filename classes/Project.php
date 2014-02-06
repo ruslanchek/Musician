@@ -130,6 +130,23 @@ Class Project extends Utilities
         );
     }
 
+    public function getAlbums(){
+        $query = "
+            SELECT
+                `id`,
+                `name`
+            FROM
+                `section_35`
+            WHERE
+                `publish` = 1
+            ORDER BY
+                `sort`
+            ASC
+        ";
+
+        return $this->db->assocMulti($query);
+    }
+
     private function checkTrackRated($id){
         $query = "
             SELECT count(id) AS `count`

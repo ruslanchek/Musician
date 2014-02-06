@@ -29,7 +29,7 @@
             <a class="pane-toggler" data-pane="about" href="#about">Обо мне</a>
             <a class="pane-toggler" data-pane="news" href="#news">Новости</a>
             <a class="pane-toggler" data-pane="music" href="#music">Музыка</a>
-            <a class="pane-toggler" data-pane="media" href="#media">Фото/видео</a>
+            <a class="pane-toggler" data-pane="media" href="#media">Фото</a>
             <a class="pane-toggler" data-pane="instruments" href="#instruments">Инструменты</a>
             <a class="pane-toggler" data-pane="contacts" href="#contacts">Контакты</a>
         </div>

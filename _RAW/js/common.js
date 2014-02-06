@@ -65,5 +65,4 @@ $(document).ready(function () {
 		smoothPlayBar: true,
 		keyEnabled: true
 	});
-	
 });

@@ -379,9 +379,7 @@ modules.music = {
         });
     },
 
-    loadItems: function(page){
-        var album = 1;
-
+    loadItems: function(page, album){
         $.ajax({
             url: '/?ajax',
             data: {
@@ -444,7 +442,7 @@ modules.music = {
                     total_pages: data.pager.total_pages,
                     current_page: page,
                     onSelect: function(page){
-                        modules.music.loadItems(page);
+                        modules.music.loadItems(page, album);
                     }
                 });
             }
@@ -508,10 +506,17 @@ modules.music = {
 
     init: function(){
         this.setupPlayer();
-        this.loadItems(1);
+        this.loadItems($('#album-select option:first').attr('value'), 1);
         this.binds();
 
         $('.video-player-viewport .video-js').show();
+
+        $('#album-select').customSelector({
+            onSelect: function(key, val){
+                modules.music.loadItems(1, key);
+                modules.music.stop();
+            }
+        });
     }
 };
 

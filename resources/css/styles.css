@@ -22,6 +22,13 @@
 		min-width: 980px;
 		font: 18px/23px 'franklingothicbookcondBkcondc';
 		color: #d8d1c4;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 	}
 	html, body {
 		height: 100%; 
@@ -1799,5 +1806,114 @@ a.jp-volume-max:hover {
     100%{
         background-color:#FCCE44}
 
+}
+/* @end */
+
+
+/* @group Loading animation */
+.customSelector-select {
+    display: none;
+}
+
+.customSelector {
+    font-size: 15px;
+    background: #fff;
+    -webkit-box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+    box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+    height: 27px;
+    line-height: 27px;
+    width: 312px;
+    position: relative;
+    margin: 0 0 2em;
+}
+
+.customSelector:hover .customSelector-current,
+.customSelectorActive .customSelector-current {
+    background: #eee;
+}
+
+.customSelector .customSelector-current {
+    padding: 0 10px;
+    color: #3C4E5A;
+    cursor: pointer;
+}
+
+.customSelector:hover .customSelector-current {
+    color: #5c738c !important;
+}
+
+.customSelector .customSelector-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 7px 6px 0 6px;
+    border-color: #000 transparent transparent transparent;
+}
+
+.customSelector:hover .customSelector-arrow {
+    border-style: solid;
+    border-width: 7px 6px 0 6px;
+    border-color: #000 transparent transparent transparent;
+}
+.customSelector .customSelector-list {
+
+    background: #fff;
+    width: 100%;
+    z-index: 1112;
+    position: absolute;
+    display: none;
+
+    top: 26px;
+    padding: 0;
+
+    -webkit-box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+    box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.customSelector .customSelector-list ul {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    list-style: none;
+}
+
+.customSelector .customSelector-list ul li:last-child,
+.customSelector .customSelector-list ul li:last-child a {
+
+}
+
+.customSelector .customSelector-list ul li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+}
+
+.customSelector .customSelector-list ul li a:hover {
+    background: #FCCE44;
+    color: #000;
+}
+
+.customSelector .customSelector-list ul li a.active {
+    background: #000;
+    color: #FCCE44;
+}
+
+.customSelector .customSelector-current .arrow {
+    position: absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 7px 6px 0 6px;
+    border-color: #007bff transparent transparent transparent;
 }
 /* @end */

@@ -76,7 +76,7 @@
                     <i></i>
                 </div>
 
-                <span id="current-track-rating" class="value arrow-top">73</span>
+                <span id="current-track-rating" class="value arrow-top"></span>
 
                 <h1 id="current-track-name"></h1>
 
@@ -110,7 +110,12 @@
         </div>
 
         <div class="audio-list">
-            <h6>Альбом</h6>
+            <select id="album-select">
+            {foreach $core->getAlbums() as $album}
+                <option value="{$album.id}">{$album.name}</option>
+            {/foreach}
+            </select>
+
             <div id="tracks"></div>
         </div>
 

@@ -28,6 +28,7 @@
 
 <script src="/resources/js/jquery.jplayer.min.js"></script>
 
+<script src="/resources/js/select.js"></script>
 <script src="/resources/js/common.js"></script>
 <script src="/resources/js/engine.js"></script>
 
