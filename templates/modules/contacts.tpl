@@ -4,7 +4,7 @@
     </div>
 
     <div class="contact-info">
-        <big>Организация концертов</big>
+        <span class="big">Организация концертов</span>
         <span class="orange">+7 (925)</span> <span>765-43-21</span>
         Концертный директор Сатлер Светлана
     </div>
@@ -28,10 +28,10 @@
             * Здесь принимаются только рабочие и творческие предложения. Эта форма сделана для вашего удобства, друзья.
         </div>
 
-        <form action="" id="contact-form">
-            <input type="text" placeholder="Ваше имя" id="form-name" />
-            <input type="text" placeholder="Электронная почта" id="form-email"/>
-            <textarea placeholder="Сообщение" id="form-message"></textarea>
+        <form action="/send.php" id="contact-form" method="post">
+            <input type="text" placeholder="Ваше имя" name="name" id="form-name" />
+            <input type="email" placeholder="Электронная почта" name="email" id="form-email"/>
+            <textarea placeholder="Сообщение" id="form-message" name="message"></textarea>
 
             <input class="float-right" type="submit" value="Отправить"/>
         </form>

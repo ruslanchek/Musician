@@ -5,7 +5,7 @@
     {$image = $core->getItemSingleImage('section_37', $instrument.id, 'col_252')}
     <div class="{if $smarty.foreach.instrument_menu.first}active{/if} instrument-item instrument{$i+1}" data-id="{$instrument.id}">
         <div class="instrument-wrapper">
-            <img src="{$image.path}{$image.name}.{$image.extension}"/>
+            <img alt="{$instrument.name}" src="{$image.path}{$image.name}.{$image.extension}"/>
         </div>
     </div>
     {/foreach}
@@ -15,7 +15,7 @@
 
         {$gallery = $core->getItemImageGallery('section_37', $instrument.id, 'col_254')}
         {foreach from=$gallery name=instrument_gallery item=ig}
-        <img data-instrument_id="{$instrument.id}" data-image_id="{$ig.id}" class="{if $smarty.foreach.instrument_gallery.first}active{/if} instrument-big-image" src="{$ig.path}{$ig.name}.{$ig.extension}"/>
+        <img alt="{$instrument.name|escape} - {$ig.id|escape}" data-instrument_id="{$instrument.id}" data-image_id="{$ig.id}" class="{if $smarty.foreach.instrument_gallery.first}active{/if} instrument-big-image" src="{$ig.path}{$ig.name}.{$ig.extension}"/>
         {/foreach}
 
         <div class="video-view-descr">
@@ -25,7 +25,7 @@
             <div class="instruments-preview" data-instrument_id="{$instrument.id}">
                 {foreach from=$gallery name=instrument_gallery_preview item=ig}
                 <div data-instrument_id="{$instrument.id}" data-image_id="{$ig.id}" class="{if $smarty.foreach.instrument_gallery_preview.first}active{/if} instruments-preview-item">
-                    <img src="{$ig.path}{$ig.name}_mini.{$ig.extension}"/>
+                    <img alt="{$instrument.name|escape} - {$ig.id|escape}" src="{$ig.path}{$ig.name}_mini.{$ig.extension}"/>
                 </div>
                 {/foreach}
             </div>

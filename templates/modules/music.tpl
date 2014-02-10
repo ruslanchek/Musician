@@ -7,7 +7,7 @@
 
             <div class="video-player-splash">
                 <a class="video-play-button" href="#" data-id="{$videos[0].id}"></a>
-                <img id="current-video-img" src="{$image.path}{$image.name}.{$image.extension}" width="453" height="345" />
+                <img alt="{$image.name} - {$image.id}" id="current-video-img" src="{$image.path}{$image.name}.{$image.extension}" width="453" height="345" />
 
                 <div class="video-view-descr">
                     <h6 id="current-video-name">{$videos[0].name}</h6>
@@ -52,7 +52,7 @@
                     data-img="{$image.path}{$image.name}.{$image.extension}"
                     class="video-preview-item{if $smarty.foreach.videos.first} current-item{/if}">
 
-                    <img src="{$image.path}{$image.name}_pic.{$image.extension}"/>
+                    <img alt="{$item.name} - {$item.id}" src="{$image.path}{$image.name}_pic.{$image.extension}"/>
 
                     <div class="video-view-descr">
                         <h6>{$item.name}</h6>

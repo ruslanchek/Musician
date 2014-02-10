@@ -1,6 +1,6 @@
 <h3 class="tw">Твиттер</h3>
 
-<div id="tweets">
+<div class="tweets">
 
 </div>
 
