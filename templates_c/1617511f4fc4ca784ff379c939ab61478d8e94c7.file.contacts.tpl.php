@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-01-31 20:25:26
+<?php /* Smarty version Smarty 3.1.4, created on 2014-02-10 16:28:59
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/contacts.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:214294147752ea255fcad438-82899438%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1617511f4fc4ca784ff379c939ab61478d8e94c7' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/contacts.tpl',
-      1 => 1391185524,
+      1 => 1392035336,
       2 => 'file',
     ),
   ),
@@ -33,6 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <div class="social-block-small">
         <p>Социальные сети</p>
+
         <span class="footer-social">
             <a class="fb" href="#"></a>
             <a class="vk" href="#"></a>
@@ -40,15 +41,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </span>
     </div>
 
-    <div style="clear: both">
+    <div class="contact-form">
         <h2>Написать письмо*</h2>
 
-        <div>* Здесь принимаются только рабочие и творческие предложения. Эта форма сделана для вашего удобства,
-            друзья.
+        <div class="form-message"></div>
+
+        <div class="disclaimer">
+            * Здесь принимаются только рабочие и творческие предложения. Эта форма сделана для вашего удобства, друзья.
         </div>
-        <input type="text" placeholder="Ваше имя"/>
-        <input type="text" placeholder="Электронная почта"/>
-        <textarea placeholder="Сообщение"></textarea>
-        <input class="float-right" type="submit" value="Отправить"/>
+
+        <form action="" id="contact-form">
+            <input type="text" placeholder="Ваше имя" id="form-name" />
+            <input type="text" placeholder="Электронная почта" id="form-email"/>
+            <textarea placeholder="Сообщение" id="form-message"></textarea>
+
+            <input class="float-right" type="submit" value="Отправить"/>
+        </form>
     </div>
 </div><?php }} ?>

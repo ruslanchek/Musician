@@ -33,6 +33,6 @@
             <a class="pane-toggler" data-pane="instruments" href="#instruments">Инструменты</a>
             <a class="pane-toggler" data-pane="contacts" href="#contacts">Контакты</a>
         </div>
-        <a class="logo" href="#">Олег Масляков</a>
+        <a class="logo pane-toggler" href="/" data-pane="about">Олег Масляков</a>
     </div>
 </div>

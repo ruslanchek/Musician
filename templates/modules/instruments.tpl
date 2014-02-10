@@ -1,93 +1,44 @@
+{$instruments = $core->getInstruments()}
+
 <div class="cl-pane-content">
-    <div class="instrument-item instrument1">
+    {foreach from=$instruments name=instrument_menu item=instrument key=i}
+    {$image = $core->getItemSingleImage('section_37', $instrument.id, 'col_252')}
+    <div class="{if $smarty.foreach.instrument_menu.first}active{/if} instrument-item instrument{$i+1}" data-id="{$instrument.id}">
         <div class="instrument-wrapper">
-            <img src="/resources/data/instruments/1.png"/>
+            <img src="{$image.path}{$image.name}.{$image.extension}"/>
         </div>
     </div>
-    <div class="instrument-item instrument2">
-        <div class="instrument-wrapper">
-            <img src="/resources/data/instruments/2.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument3">
-        <div class="instrument-wrapper">
-            <img src="/resources/data/instruments/3.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument4">
-        <div class="instrument-wrapper">
-            <img src="/resources/data/instruments/4.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument-small instrument5">
-        <div class="instrument-wrapper">
-            <img src="/resources/data/instruments/5.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument-small instrument6">
-        <div class="instrument-wrapper">
-            <img src="/resources/data/instruments/6.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument-small instrument7">
-        <div class="instrument-wrapper">
-            <img src="/resources/data/instruments/7.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument-small instrument8">
-        <div class="instrument-wrapper">
-            <img src="/resources/data/instruments/8.png"/>
-        </div>
-    </div>
-    <div id="instruments">
-        <img src="/resources/data/instruments/1.jpg"/>
+    {/foreach}
+
+    {foreach from=$instruments name=instrument_item item=instrument key=i}
+    <div class="instruments {if $smarty.foreach.instrument_item.first}active{/if}" data-id="{$instrument.id}">
+
+        {$gallery = $core->getItemImageGallery('section_37', $instrument.id, 'col_254')}
+        {foreach from=$gallery name=instrument_gallery item=ig}
+        <img data-instrument_id="{$instrument.id}" data-image_id="{$ig.id}" class="{if $smarty.foreach.instrument_gallery.first}active{/if} instrument-big-image" src="{$ig.path}{$ig.name}.{$ig.extension}"/>
+        {/foreach}
 
         <div class="video-view-descr">
-            <h6>Труба Bravura</h6>
+            <h6>{$instrument.name}</h6>
+            <p>{$instrument.desc}</p>
 
-            <p>История инструмента</p>
-
-            <div class="instruments-preview">
-                <div class="instruments-preview-item">
-                    <img src="/resources/data/instruments/1_thumb.jpg"/>
+            <div class="instruments-preview" data-instrument_id="{$instrument.id}">
+                {foreach from=$gallery name=instrument_gallery_preview item=ig}
+                <div data-instrument_id="{$instrument.id}" data-image_id="{$ig.id}" class="{if $smarty.foreach.instrument_gallery_preview.first}active{/if} instruments-preview-item">
+                    <img src="{$ig.path}{$ig.name}_mini.{$ig.extension}"/>
                 </div>
-                <div class="instruments-preview-item">
-                    <img src="/resources/data/instruments/2_thumb.jpg"/>
-                </div>
-                <div class="instruments-preview-item">
-                    <img src="/resources/data/instruments/3_thumb.jpg"/>
-                </div>
-                <div class="instruments-preview-item">
-                    <img src="/resources/data/instruments/4_thumb.jpg"/>
-                </div>
-                <div class="instruments-preview-item">
-                    <img src="/resources/data/instruments/5_thumb.jpg"/>
-                </div>
-                <div class="instruments-preview-item">
-                    <img src="/resources/data/instruments/6_thumb.jpg"/>
-                </div>
+                {/foreach}
             </div>
         </div>
-        <div class="full-descr">
+
+        <div class="full-descr" data-instrument_id="{$instrument.id}">
             <div class="full-descr-content">
                 <a class="close" href="#"></a>
-                <h6>Труба Bravura</h6>
+                <h6>{$instrument.name}</h6>
 
-                <p>Труба — один из древнейших музыкальных инструментов. Упоминания о самых старых инструментах
-                    подобного типа датируются приблизительно<br/>
-                    3600 лет до н. э.</p>
-
-                <p class="small">Трубы существовали во многих цивилизациях — в Древнем Египте, Древней Греции,
-                    Древнем Китае и др., и использовались как сигнальные инструменты. Такую роль труба играла в
-                    течение многих столетий, вплоть до XVII века.</p>
-
-                <p class="small">В Средневековье трубачи были обязательными членами войска, только они могли с
-                    помощью сигнала быстро передать приказ командующего другим частям армии, находившимся на
-                    расстоянии. <br/>
-                    Искусство игры на трубе считалось «элитным», ему обучали только особо отобранных людей. В мирное
-                    время трубы звучали на праздничных шествиях, рыцарских турнирах, в крупных городах существовала
-                    должность «башенных» трубачей, которые извещали о </p>
+                {$instrument.text}
             </div>
         </div>
     </div>
+    {/foreach}
 </div>

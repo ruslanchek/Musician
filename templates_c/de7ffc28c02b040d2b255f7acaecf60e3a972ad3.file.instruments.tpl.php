@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-01-30 14:11:43
+<?php /* Smarty version Smarty 3.1.4, created on 2014-02-10 15:29:49
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/instruments.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:102176115552ea255fbcb0f7-88679357%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'de7ffc28c02b040d2b255f7acaecf60e3a972ad3' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/instruments.tpl',
-      1 => 1391076645,
+      1 => 1392031738,
       2 => 'file',
     ),
   ),
@@ -15,100 +15,119 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty 3.1.4',
   'unifunc' => 'content_52ea255fca5ae',
+  'variables' => 
+  array (
+    'core' => 0,
+    'instruments' => 0,
+    'instrument' => 0,
+    'i' => 0,
+    'image' => 0,
+    'gallery' => 0,
+    'ig' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_52ea255fca5ae')) {function content_52ea255fca5ae($_smarty_tpl) {?><div class="cl-pane-content">
-    <div class="instrument-item instrument1">
+<?php if ($_valid && !is_callable('content_52ea255fca5ae')) {function content_52ea255fca5ae($_smarty_tpl) {?><?php $_smarty_tpl->tpl_vars['instruments'] = new Smarty_variable($_smarty_tpl->tpl_vars['core']->value->getInstruments(), null, 0);?>
+
+<div class="cl-pane-content">
+    <?php  $_smarty_tpl->tpl_vars['instrument'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['instrument']->_loop = false;
+ $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['instruments']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['instrument']->index=-1;
+foreach ($_from as $_smarty_tpl->tpl_vars['instrument']->key => $_smarty_tpl->tpl_vars['instrument']->value){
+$_smarty_tpl->tpl_vars['instrument']->_loop = true;
+ $_smarty_tpl->tpl_vars['i']->value = $_smarty_tpl->tpl_vars['instrument']->key;
+ $_smarty_tpl->tpl_vars['instrument']->index++;
+ $_smarty_tpl->tpl_vars['instrument']->first = $_smarty_tpl->tpl_vars['instrument']->index === 0;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['instrument_menu']['first'] = $_smarty_tpl->tpl_vars['instrument']->first;
+?>
+    <?php $_smarty_tpl->tpl_vars['image'] = new Smarty_variable($_smarty_tpl->tpl_vars['core']->value->getItemSingleImage('section_37',$_smarty_tpl->tpl_vars['instrument']->value['id'],'col_252'), null, 0);?>
+    <div class="<?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['instrument_menu']['first']){?>active<?php }?> instrument-item instrument<?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
+" data-id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
+">
         <div class="instrument-wrapper">
-            <img src="trash/instruments/1.png"/>
+            <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
+<?php echo $_smarty_tpl->tpl_vars['image']->value['name'];?>
+.<?php echo $_smarty_tpl->tpl_vars['image']->value['extension'];?>
+"/>
         </div>
     </div>
-    <div class="instrument-item instrument2">
-        <div class="instrument-wrapper">
-            <img src="trash/instruments/2.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument3">
-        <div class="instrument-wrapper">
-            <img src="trash/instruments/3.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument4">
-        <div class="instrument-wrapper">
-            <img src="trash/instruments/4.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument-small instrument5">
-        <div class="instrument-wrapper">
-            <img src="trash/instruments/5.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument-small instrument6">
-        <div class="instrument-wrapper">
-            <img src="trash/instruments/6.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument-small instrument7">
-        <div class="instrument-wrapper">
-            <img src="trash/instruments/7.png"/>
-        </div>
-    </div>
-    <div class="instrument-item instrument-small instrument8">
-        <div class="instrument-wrapper">
-            <img src="trash/instruments/8.png"/>
-        </div>
-    </div>
-    <div id="instruments">
-        <img src="trash/instruments/1.jpg"/>
+    <?php } ?>
+
+    <?php  $_smarty_tpl->tpl_vars['instrument'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['instrument']->_loop = false;
+ $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['instruments']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['instrument']->index=-1;
+foreach ($_from as $_smarty_tpl->tpl_vars['instrument']->key => $_smarty_tpl->tpl_vars['instrument']->value){
+$_smarty_tpl->tpl_vars['instrument']->_loop = true;
+ $_smarty_tpl->tpl_vars['i']->value = $_smarty_tpl->tpl_vars['instrument']->key;
+ $_smarty_tpl->tpl_vars['instrument']->index++;
+ $_smarty_tpl->tpl_vars['instrument']->first = $_smarty_tpl->tpl_vars['instrument']->index === 0;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['instrument_item']['first'] = $_smarty_tpl->tpl_vars['instrument']->first;
+?>
+    <div class="instruments <?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['instrument_item']['first']){?>active<?php }?>" data-id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
+">
+
+        <?php $_smarty_tpl->tpl_vars['gallery'] = new Smarty_variable($_smarty_tpl->tpl_vars['core']->value->getItemImageGallery('section_37',$_smarty_tpl->tpl_vars['instrument']->value['id'],'col_254'), null, 0);?>
+        <?php  $_smarty_tpl->tpl_vars['ig'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['ig']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['gallery']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['ig']->index=-1;
+foreach ($_from as $_smarty_tpl->tpl_vars['ig']->key => $_smarty_tpl->tpl_vars['ig']->value){
+$_smarty_tpl->tpl_vars['ig']->_loop = true;
+ $_smarty_tpl->tpl_vars['ig']->index++;
+ $_smarty_tpl->tpl_vars['ig']->first = $_smarty_tpl->tpl_vars['ig']->index === 0;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['instrument_gallery']['first'] = $_smarty_tpl->tpl_vars['ig']->first;
+?>
+        <img data-instrument_id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
+" data-image_id="<?php echo $_smarty_tpl->tpl_vars['ig']->value['id'];?>
+" class="<?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['instrument_gallery']['first']){?>active<?php }?> instrument-big-image" src="<?php echo $_smarty_tpl->tpl_vars['ig']->value['path'];?>
+<?php echo $_smarty_tpl->tpl_vars['ig']->value['name'];?>
+.<?php echo $_smarty_tpl->tpl_vars['ig']->value['extension'];?>
+"/>
+        <?php } ?>
 
         <div class="video-view-descr">
-            <h6>Труба Bravura</h6>
+            <h6><?php echo $_smarty_tpl->tpl_vars['instrument']->value['name'];?>
+</h6>
+            <p><?php echo $_smarty_tpl->tpl_vars['instrument']->value['desc'];?>
+</p>
 
-            <p>История инструмента</p>
-
-            <div class="instruments-preview">
-                <div class="instruments-preview-item">
-                    <img src="trash/instruments/1_thumb.jpg"/>
+            <div class="instruments-preview" data-instrument_id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
+">
+                <?php  $_smarty_tpl->tpl_vars['ig'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['ig']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['gallery']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['ig']->index=-1;
+foreach ($_from as $_smarty_tpl->tpl_vars['ig']->key => $_smarty_tpl->tpl_vars['ig']->value){
+$_smarty_tpl->tpl_vars['ig']->_loop = true;
+ $_smarty_tpl->tpl_vars['ig']->index++;
+ $_smarty_tpl->tpl_vars['ig']->first = $_smarty_tpl->tpl_vars['ig']->index === 0;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['instrument_gallery_preview']['first'] = $_smarty_tpl->tpl_vars['ig']->first;
+?>
+                <div data-instrument_id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
+" data-image_id="<?php echo $_smarty_tpl->tpl_vars['ig']->value['id'];?>
+" class="<?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['instrument_gallery_preview']['first']){?>active<?php }?> instruments-preview-item">
+                    <img src="<?php echo $_smarty_tpl->tpl_vars['ig']->value['path'];?>
+<?php echo $_smarty_tpl->tpl_vars['ig']->value['name'];?>
+_mini.<?php echo $_smarty_tpl->tpl_vars['ig']->value['extension'];?>
+"/>
                 </div>
-                <div class="instruments-preview-item">
-                    <img src="trash/instruments/2_thumb.jpg"/>
-                </div>
-                <div class="instruments-preview-item">
-                    <img src="trash/instruments/3_thumb.jpg"/>
-                </div>
-                <div class="instruments-preview-item">
-                    <img src="trash/instruments/4_thumb.jpg"/>
-                </div>
-                <div class="instruments-preview-item">
-                    <img src="trash/instruments/5_thumb.jpg"/>
-                </div>
-                <div class="instruments-preview-item">
-                    <img src="trash/instruments/6_thumb.jpg"/>
-                </div>
+                <?php } ?>
             </div>
         </div>
-        <div class="full-descr">
+
+        <div class="full-descr" data-instrument_id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
+">
             <div class="full-descr-content">
                 <a class="close" href="#"></a>
-                <h6>Труба Bravura</h6>
+                <h6><?php echo $_smarty_tpl->tpl_vars['instrument']->value['name'];?>
+</h6>
 
-                <p>Труба — один из древнейших музыкальных инструментов. Упоминания о самых старых инструментах
-                    подобного типа датируются приблизительно<br/>
-                    3600 лет до н. э.</p>
+                <?php echo $_smarty_tpl->tpl_vars['instrument']->value['text'];?>
 
-                <p class="small">Трубы существовали во многих цивилизациях — в Древнем Египте, Древней Греции,
-                    Древнем Китае и др., и использовались как сигнальные инструменты. Такую роль труба играла в
-                    течение многих столетий, вплоть до XVII века.</p>
-
-                <p class="small">В Средневековье трубачи были обязательными членами войска, только они могли с
-                    помощью сигнала быстро передать приказ командующего другим частям армии, находившимся на
-                    расстоянии. <br/>
-                    Искусство игры на трубе считалось «элитным», ему обучали только особо отобранных людей. В мирное
-                    время трубы звучали на праздничных шествиях, рыцарских турнирах, в крупных городах существовала
-                    должность «башенных» трубачей, которые извещали о </p>
             </div>
         </div>
     </div>
+    <?php } ?>
 </div><?php }} ?>

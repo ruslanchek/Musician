@@ -263,6 +263,43 @@ modules.media = {
                             $this.addClass('ready');
                         });
                     }, 400); // Delay to avoid loading animation intersection
+
+                    $('#photo .item').on('click', function(e){
+                        e.preventDefault();
+                        common.iterateObjects('#photo .item', 35, function($this){
+                            $this.removeClass('ready');
+                        });
+
+                        $('#media-pager').hide();
+
+                        var src = $(this).find('a').attr('href');
+
+                        setTimeout(function(){
+                            $('#photo').append(Handlebars.compile($("#media-list-item").html())({
+                                src: src
+                            }));
+
+                            setTimeout(function(){
+                                $('.social-item-open-gallery').addClass('ready');
+                            }, 100);
+
+                            $('.social-item-open-gallery .close').on('click', function(e){
+                                e.preventDefault();
+                                $('.social-item-open-gallery').removeClass('ready');
+
+                                setTimeout(function(){
+                                    $('.social-item-open-gallery').remove();
+
+                                    common.iterateObjects('#photo .item', 35, function($this){
+                                        $this.addClass('ready');
+                                    });
+
+                                    $('#media-pager').show();
+                                }, 200);
+                            });
+
+                        }, 300);
+                    });
                 });
 
                 common.generatePager({
@@ -314,6 +351,7 @@ modules.music = {
 
     play: function(){
         this.player.jPlayer('play');
+        this.stopAllVideos();
     },
 
     stop: function(){
@@ -449,7 +487,7 @@ modules.music = {
         });
     },
 
-    stopAll: function(){
+    stopAllVideos: function(){
         $('.video-js').each(function(){
             var id = $(this).attr('id'),
                 videoplayer = videojs(id);
@@ -459,7 +497,7 @@ modules.music = {
     },
 
     startVideo: function(id){
-        this.stopAll();
+        this.stopAllVideos();
 
         $('.video-player-viewport').fadeIn(200);
         $('.video-player-splash').fadeOut(200);
@@ -468,11 +506,11 @@ modules.music = {
 
         videoplayer.play();
 
-        console.log('video_' + id)
+        this.stop();
     },
 
     selectVideo: function(id){
-        this.stopAll();
+        this.stopAllVideos();
 
         var $item = $('.video-preview .video-preview-item[data-id="' + id + '"]');
 
@@ -521,20 +559,83 @@ modules.music = {
 };
 
 modules.instruments = {
+    current_instrument_id: null,
+
+    openInstrument: function(id){
+        $('.instrument-item').removeClass('active');
+        $('.instrument-item[data-id="' + id + '"]').addClass('active');
+
+        $('.instruments').removeClass('active');
+        $('.instruments[data-id="' + id + '"]').addClass('active');
+
+        this.current_instrument_id = id;
+    },
+
     init: function(){
-        $('#instruments .instruments-preview .instruments-preview-item').click(function(e){
+        this.current_instrument_id = $('.instrument-item.active').data('id');
+
+        $('.instrument-item').on('click', function(e){
             e.preventDefault();
-            $(this).parents('#instruments').find('.video-view-descr').fadeOut();
-            $(this).parents('#instruments').find('.full-descr').fadeIn();
+            modules.instruments.openInstrument($(this).data('id'));
         });
 
-        $('#instruments .full-descr .close').click(function(e){
+        $('.instruments-preview .instruments-preview-item').on('click', function(e){
             e.preventDefault();
-            $(this).parents('#instruments').find('.full-descr').fadeOut();
-            $(this).parents('#instruments').find('.video-view-descr').fadeIn();
+
+            $('.instruments-preview .instruments-preview-item[data-instrument_id="' + modules.instruments.current_instrument_id + '"]').removeClass('active');
+            $('.instruments-preview .instruments-preview-item[data-image_id="' + $(this).data('image_id') + '"]').addClass('active');
+            $('.instrument-big-image[data-instrument_id="' + modules.instruments.current_instrument_id + '"]').removeClass('active');
+            $('.instrument-big-image[data-image_id="' + $(this).data('image_id') + '"]').addClass('active');
+        });
+
+        $('.instrument-big-image').on('click', function(e){
+            $('.full-descr[data-instrument_id="' + modules.instruments.current_instrument_id + '"]').fadeIn(200);
+            $('.full-descr .close').on('click', function(e){
+                $('.full-descr').fadeOut(200)
+            });
         });
     }
 };
+
+modules.contacts = {
+    send: function(){
+        $.ajax({
+            url: '/send.php',
+            data: {
+                name: $('#form-name').val(),
+                email: $('#form-email').val(),
+                message: $('#form-message').val()
+            },
+            type: 'post',
+            dataType: 'json',
+            beforeSend: function(){
+                common.setGlobalLoading('contact');
+                $('.form-message').html('').removeClass('error success');
+                $('#contact-form input[type="submit"]').attr('disabled', 'disabled');
+            },
+            success: function(data){
+                common.unSetGlobalLoading('contact');
+
+                if(data.status == true){
+                    $('.form-message').addClass('success');
+                    $('#contact-form input, #contact-form textarea').fadeOut();
+                }else{
+                    $('.form-message').addClass('error');
+                }
+
+                $('.form-message').html(data.message);
+                $('#contact-form input[type="submit"]').removeAttr('disabled');
+            }
+        });
+    },
+
+    init: function(){
+        $('#contact-form').on('submit', function(e){
+            e.preventDefault();
+            modules.contacts.send();
+        });
+    }
+}
 
 $(function(){
     common.init();

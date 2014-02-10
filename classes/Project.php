@@ -228,4 +228,25 @@ Class Project extends Utilities
 
         return $this->db->assocMulti($query);
     }
+
+    public function getInstruments(){
+        $query = "
+            SELECT
+                `id`,
+                `sort`,
+                `publish`,
+                `name`,
+                `col_251` AS `desc`,
+                `col_256` AS `text`
+            FROM
+                `section_37`
+            WHERE
+                `publish` = 1
+            ORDER BY
+                `sort`
+            ASC
+        ";
+
+        return $this->db->assocMulti($query);
+    }
 }

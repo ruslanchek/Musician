@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-01-31 20:12:33
+<?php /* Smarty version Smarty 3.1.4, created on 2014-02-10 16:32:22
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/include/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:126688587352ea0c57495402-37767256%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0fb8bfe9153fa7ef143cc2d1c58998342021b1d4' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/include/common/header.tpl',
-      1 => 1391184745,
+      1 => 1392035540,
       2 => 'file',
     ),
   ),
@@ -50,10 +50,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <a class="pane-toggler" data-pane="about" href="#about">Обо мне</a>
             <a class="pane-toggler" data-pane="news" href="#news">Новости</a>
             <a class="pane-toggler" data-pane="music" href="#music">Музыка</a>
-            <a class="pane-toggler" data-pane="media" href="#media">Фото/видео</a>
+            <a class="pane-toggler" data-pane="media" href="#media">Фото</a>
             <a class="pane-toggler" data-pane="instruments" href="#instruments">Инструменты</a>
             <a class="pane-toggler" data-pane="contacts" href="#contacts">Контакты</a>
         </div>
-        <a class="logo" href="#">Олег Масляков</a>
+        <a class="logo pane-toggler" href="/" data-pane="about">Олег Масляков</a>
     </div>
 </div><?php }} ?>

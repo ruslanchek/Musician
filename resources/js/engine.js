@@ -26,7 +26,7 @@ var WPEngine = {
         about       : { offset_x: 600, offset_y: 0, orientation: 'N' },
         news        : { offset_x: 2500, offset_y: 0, orientation: 'N' },
         music       : { offset_x: 1500, offset_y: 350, orientation: 'E' },
-        media       : { offset_x: 1740, offset_y: 150, orientation: 'W' },
+        media       : { offset_x: 1560, offset_y: 150, orientation: 'W' },
         instruments : { offset_x: 2400, offset_y: 100, orientation: 'S' },
         contacts    : { offset_x: 515, offset_y: 0, orientation: 'S' }
     },
@@ -129,6 +129,11 @@ var WPEngine = {
                 }
 
                 _this.$bgli.removeClass('animate-slow').addClass('animate-none');
+
+                $('.cl-pane-content').css({
+                    left: 0,
+                    top: 0
+                });
             }, delay);
 
             this.current_pane = pane;
@@ -153,6 +158,8 @@ var WPEngine = {
         this.goy = 0;
         this.mox = 0;
         this.moy = 0;
+        this.mox_stop = false;
+        this.moy_stop = false;
 
         var _this = this;
 
@@ -172,12 +179,28 @@ var WPEngine = {
                     _this.$bgli.css({
                         marginLeft: tx
                     });
+
+                    $('.cl-pane-content').css({
+                        left: tx
+                    });
+
+                    _this.mox_stop = false;
+                }else{
+                    _this.mox_stop = true;
                 }
 
                 if(dimy > bh && dimy < _this.bg_height){
                     _this.$bgli.css({
                         marginTop: ty
                     });
+
+                    $('.cl-pane-content').css({
+                        top: ty
+                    });
+
+                    _this.moy_stop = false;
+                }else{
+                    _this.moy_stop = true;
                 }
             }
         });
@@ -192,8 +215,13 @@ var WPEngine = {
         $('body').mouseup(function(e){
             _this.move = false;
 
-            _this.mox += e.clientX - _this.gox;
-            _this.moy += e.clientY - _this.goy;
+            if(_this.mox_stop === false){
+                _this.mox += e.clientX - _this.gox;
+            }
+
+            if(_this.moy_stop === false){
+                _this.moy += e.clientY - _this.goy;
+            }
         });
     },
 

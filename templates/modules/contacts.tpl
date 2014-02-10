@@ -11,6 +11,7 @@
 
     <div class="social-block-small">
         <p>Социальные сети</p>
+
         <span class="footer-social">
             <a class="fb" href="#"></a>
             <a class="vk" href="#"></a>
@@ -18,15 +19,21 @@
         </span>
     </div>
 
-    <div style="clear: both">
+    <div class="contact-form">
         <h2>Написать письмо*</h2>
 
-        <div>* Здесь принимаются только рабочие и творческие предложения. Эта форма сделана для вашего удобства,
-            друзья.
+        <div class="form-message"></div>
+
+        <div class="disclaimer">
+            * Здесь принимаются только рабочие и творческие предложения. Эта форма сделана для вашего удобства, друзья.
         </div>
-        <input type="text" placeholder="Ваше имя"/>
-        <input type="text" placeholder="Электронная почта"/>
-        <textarea placeholder="Сообщение"></textarea>
-        <input class="float-right" type="submit" value="Отправить"/>
+
+        <form action="" id="contact-form">
+            <input type="text" placeholder="Ваше имя" id="form-name" />
+            <input type="text" placeholder="Электронная почта" id="form-email"/>
+            <textarea placeholder="Сообщение" id="form-message"></textarea>
+
+            <input class="float-right" type="submit" value="Отправить"/>
+        </form>
     </div>
 </div>

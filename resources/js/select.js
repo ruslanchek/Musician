@@ -105,6 +105,7 @@
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === 'object' || !method) {
+            methods.destroy.apply(this);
             return methods.init.apply(this, arguments);
         } else {
             $.error('Метод с именем ' + method + ' не существует для jQuery.customSelector');
