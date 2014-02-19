@@ -30,6 +30,6 @@
 		//DB vars
 		'db_host'                   => 'localhost',
 		'db_base'                   => 'musician',
-		'db_user'                   => 'fortyfour',
-		'db_pass'                   => 'W8zXGYPa'
+		'db_user'                   => 'root',
+		'db_pass'                   => '123'
 	);

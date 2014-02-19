@@ -3,10 +3,20 @@
  * Этот класс используется для расширения функционала ядра системы (/classes/Core.php)
  * */
 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/twitter/TwitterAPIExchange.php');
+
 Class Project extends Utilities
 {
     public function __construct()
     {
+        $this->settings = array(
+            'oauth_access_token' => "42608033-iT1O0zOhMYPitjA2kXdG1ynvS2kF76zEkhDw3eQN1",
+            'oauth_access_token_secret' => "6KYlvsz2se5VznKP3TKBK54KL62GxzE6u20q46hzXE1jB",
+            'consumer_key' => "yYrQADuHH3LRhnd64k9pNg",
+            'consumer_secret' => "Ul9yihShoOnupvTwad2l5BCjWMTZ8DmfNaZYjNmQ",
+            'username' => 'ruslanchek'
+        );
+
         $this->operateAJAX();
     }
 
@@ -37,6 +47,11 @@ Class Project extends Utilities
                 case 'setTrackRate' : {
                     header('Content-type: application/json');
                     print json_encode( $this->setTrackRate($_GET['id'], $_GET['act']) );
+                } break;
+
+                case 'getTweets' : {
+                    header('Content-type: application/json');
+                    print $this->getTweets();
                 } break;
             };
 
@@ -248,5 +263,15 @@ Class Project extends Utilities
         ";
 
         return $this->db->assocMulti($query);
+    }
+
+    public function getTweets(){
+        $twitter = new TwitterAPIExchange($this->settings);
+
+        $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
+        $getfield = '?count=2&screen_name=' . $this->settings['username'];
+        $requestMethod = 'GET';
+
+        return $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
     }
 }

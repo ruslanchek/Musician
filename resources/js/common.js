@@ -2,6 +2,77 @@ var common = {
     loading_pool: {},
     global_loading_interval: null,
 
+    humanizeDate: function (date, output_with_time) {
+        if (!date) {
+            return '&mdash;';
+        }
+
+        if (!(Object.prototype.toString.call(date) === "[object Date]")) {
+            var t = date.split('.');
+
+            date = new Date((t[1] + '-' + t[0] + '-' + t[2]));
+        }
+
+        var h_date,
+            month_names = [
+                'января',
+                'февраля',
+                'марта',
+                'апреля',
+                'мая',
+                'июня',
+                'июля',
+                'августа',
+                'сентября',
+                'октября',
+                'ноября',
+                'декабря'
+            ];
+
+        var d = date.getDate(),
+            M = date.getMonth(),
+            Y = date.getFullYear();
+
+        h_date = d + ' ' + month_names[M] + ' ' + Y;
+
+        if (output_with_time === true) {
+            var H = date.getHours(),
+                i = date.getMinutes(),
+                s = date.getSeconds();
+
+            if (i < 10) {
+                i = '0' + i;
+            }
+
+            if (s < 10) {
+                s = '0' + s;
+            }
+
+            h_date = h_date + ', ' + H + ':' + i + ':' + s;
+        }
+
+        return h_date;
+    },
+
+    getTweets: function(){
+        $.ajax({
+            url: '/?ajax&action=getTweets',
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+                var html = '';
+
+                for(var i = 0, l = data.length; i < l; i++){
+                    var date = common.humanizeDate(new Date(data[i].created_at));
+
+                    html += '<p><span class="date">' + date + '</span>  ' + data[i].text + '</p>';
+                }
+
+                $('.tweets').html(html);
+            }
+        });
+    },
+
     iterateObjects: function(selector, interval, doIt){
         var i = 0;
 
@@ -109,12 +180,8 @@ var common = {
         });
     },
 
-    renderTweets: function(){
-
-    },
-
     init: function(){
-        this.renderTweets();
+        this.getTweets();
     }
 };
 
@@ -577,68 +644,6 @@ modules.instruments = {
         $('.instrument-item').on('click', function(e){
             e.preventDefault();
             modules.instruments.openInstrument($(this).data('id'));
-        });
-
-        $(".instrument-item:first").animate({
-            crSpline: $.crSpline.buildSequence([
-                1.1328125,
-                45.1171875,
-                38.9414063,
-                179.300781,
-                188.953125,
-                330.539062,
-                188.953125,
-                330.539062,
-                188.953125,
-                330.539062,
-                644.179687,
-                642.171876,
-                533.71875,
-                432.847656,
-                423.257812,
-                223.523437,
-                597.285156,
-                351.78125,
-                597.285156,
-                351.78125,
-                597.285156,
-                351.78125,
-                749.777344,
-                167.664062,
-                564.441406,
-                167.664062,
-                379.105469,
-                167.664062,
-                320.242184,
-                159.35547,
-                352.863281,
-                225.335938,
-                385.484375,
-                291.316406,
-                195.406256,
-                324.488282,
-                217.679688,
-                214.957031,
-                239.953125,
-                105.425781,
-                213.003909,
-                44.3789032,
-                277.761719,
-                70.3242188,
-                342.519531,
-                96.2695312,
-                378.367184,
-                203.027343,
-                396.898438,
-                121.476562,
-                415.429688,
-                39.9257812,
-                306.449219,
-                0.9296875,
-                306.449219,
-                0.9296875
-            ]),
-            duration: 50000
         });
 
         $('.instruments-preview .instruments-preview-item').on('click', function(e){
