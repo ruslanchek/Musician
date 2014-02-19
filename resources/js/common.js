@@ -4,24 +4,32 @@ var common = {
 
     setInitLoading: function(){
         var html = '<div id="loading-init-overlay"><div class="loading-logo"></div><div class="loader"></div></div>';
-        $('body').append(html);
+        $('body').prepend(html);
         $('.viewport').hide();
 
-        $('#loading-init-overlay').find('.loading-logo, .loader').animate({
-            opacity: 1
-        }, 1200);
+        $('#loading-init-overlay').waitForImages({
+            finished: function() {
+                $('#loading-init-overlay').find('.loading-logo, .loader').animate({
+                    opacity: 1
+                }, 1200);
 
-        setTimeout(function(){
-            $('body').waitForImages({
-                finished: function() {
-                    common.hideInitLoading();
-                },
-                each: function(i) {
-                    console.log(i)
-                },
-                waitForAll: true
-            });
-        }, 500);
+                $('body').waitForImages({
+                    finished: function() {
+                        setTimeout(function(){
+                            common.hideInitLoading();
+                        }, 500);
+                    },
+                    each: function() {
+
+                    },
+                    waitForAll: true
+                });
+            },
+            each: function() {
+
+            },
+            waitForAll: true
+        });
     },
 
     hideInitLoading: function(){
