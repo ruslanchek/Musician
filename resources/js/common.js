@@ -2,6 +2,48 @@ var common = {
     loading_pool: {},
     global_loading_interval: null,
 
+    setInitLoading: function(){
+        var html = '<div id="loading-init-overlay"><div class="loading-logo"></div><div class="loader"></div></div>';
+        $('body').append(html);
+        $('.viewport').hide();
+
+        $('#loading-init-overlay').find('.loading-logo, .loader').animate({
+            opacity: 1
+        }, 1200);
+
+        setTimeout(function(){
+            $('body').waitForImages({
+                finished: function() {
+                    common.hideInitLoading();
+                },
+                each: function(i) {
+                    console.log(i)
+                },
+                waitForAll: true
+            });
+        }, 500);
+    },
+
+    hideInitLoading: function(){
+        $('#loading-init-overlay .loader').animate({
+            opacity: 0,
+            top: -1000
+        }, 1200);
+
+        $('.viewport').show();
+
+        setTimeout(function(){
+            $('#loading-init-overlay .loading-logo').animate({
+                opacity: 0,
+                top: 2000
+            }, 1200);
+
+            setTimeout(function(){
+                $('#loading-init-overlay').fadeOut(400);
+            }, 800);
+        }, 200);
+    },
+
     humanizeDate: function (date, output_with_time) {
         if (!date) {
             return '&mdash;';
@@ -182,6 +224,7 @@ var common = {
 
     init: function(){
         this.getTweets();
+        this.setInitLoading();
     }
 };
 
@@ -702,7 +745,7 @@ modules.contacts = {
             modules.contacts.send();
         });
     }
-}
+};
 
 $(function(){
     common.init();

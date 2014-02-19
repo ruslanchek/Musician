@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-02-19 08:37:55
+<?php /* Smarty version Smarty 3.1.4, created on 2014-02-19 21:26:03
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/include/common/head.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:120594019552ea0c572a41d0-27678533%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '681acdd2fac61777a02a6b07eac8da7bad276b81' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/include/common/head.tpl',
-      1 => 1392784500,
+      1 => 1392830680,
       2 => 'file',
     ),
   ),
@@ -40,6 +40,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
 <script src="/resources/js/jquery.imagesloaded.js"></script>
+<script src="/resources/js/jquery.waitforimages.min.js"></script>
 <script src="/resources/js/jquery.wookmark.min.js"></script>
 <script src="/resources/js/handlebars-v1.3.0.js"></script>
 <script src="/resources/js/jquery.jplayer.min.js"></script>

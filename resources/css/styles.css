@@ -2085,9 +2085,41 @@ a.jp-volume-max:hover {
 
 .vjs-default-skin .vjs-play-progress,
 .vjs-default-skin .vjs-volume-level {
-    background-color: #ffc900
+    background-color: #ffc900;
 }
 
 .vjs-default-skin .vjs-control-bar {
-    font-size: 115%
+    font-size: 115%;
+}
+
+#loading-init-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10000;
+    background: #000000;
+    top: 0;
+    left: 0;
+}
+
+#loading-init-overlay .loader {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    background: #ffc900;
+    margin: -175px 0 0 -175px;
+    opacity: 0;
+}
+
+#loading-init-overlay .loading-logo {
+    background: url(../img/loading-logo.png);
+    width: 317px;
+    height: 71px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 178px 0 0 -159px;
+    opacity: 0;
 }
