@@ -24,7 +24,15 @@ var common = {
             opacity: 1
         }, 1200);
 
-        startAnimation();
+        $('#loading-init-overlay').find('.loading-logo, .loader').waitForImages({
+            finished: function() {
+                startAnimation();
+            },
+            each: function() {
+
+            },
+            waitForAll: true
+        });
 
         $('body').waitForImages({
             finished: function() {
@@ -34,7 +42,8 @@ var common = {
             },
             each: function() {
 
-            }
+            },
+            waitForAll: true
         });
     },
 
