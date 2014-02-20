@@ -1,44 +1,50 @@
 var common = {
     loading_pool: {},
     global_loading_interval: null,
+    anim_pos: 0,
 
     setInitLoading: function(){
+        function startAnimation(){
+            common.lai = setInterval(function(){
+                common.anim_pos++;
+
+                $('#loading-init-overlay .loader').css({
+                    backgroundPosition: '0 -' + (common.anim_pos * 357) + 'px'
+                });
+
+                console.log(common.anim_pos)
+            }, 41);
+        }
+
         var html = '<div id="loading-init-overlay"><div class="loading-logo"></div><div class="loader"></div></div>';
         $('body').prepend(html);
         $('.viewport').hide();
 
-        $('#loading-init-overlay').waitForImages({
+        $('#loading-init-overlay').find('.loading-logo, .loader').animate({
+            opacity: 1
+        }, 1200);
+
+        startAnimation();
+
+        $('body').waitForImages({
             finished: function() {
-                $('#loading-init-overlay').find('.loading-logo, .loader').animate({
-                    opacity: 1
-                }, 1200);
-
-                $('body').waitForImages({
-                    finished: function() {
-                        setTimeout(function(){
-                            common.hideInitLoading();
-                        }, 500);
-                    },
-                    each: function() {
-
-                    },
-                    waitForAll: true
-                });
+                setTimeout(function(){
+                    common.hideInitLoading();
+                }, 500);
             },
             each: function() {
 
-            },
-            waitForAll: true
+            }
         });
     },
 
     hideInitLoading: function(){
+        $('.viewport').show();
+
         $('#loading-init-overlay .loader').animate({
             opacity: 0,
             top: -1000
-        }, 1200);
-
-        $('.viewport').show();
+        }, 800);
 
         setTimeout(function(){
             $('#loading-init-overlay .loading-logo').animate({
@@ -48,7 +54,8 @@ var common = {
 
             setTimeout(function(){
                 $('#loading-init-overlay').fadeOut(400);
-            }, 800);
+                clearInterval(common.lai);
+            }, 1200);
         }, 200);
     },
 

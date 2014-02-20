@@ -2097,20 +2097,22 @@ a.jp-volume-max:hover {
     height: 100%;
     position: fixed;
     z-index: 10000;
-    background: #000000;
+    background: #070604;
     top: 0;
     left: 0;
 }
 
 #loading-init-overlay .loader {
     position: absolute;
-    width: 350px;
-    height: 350px;
+    width: 340px;
+    height: 357px;
     top: 50%;
     left: 50%;
-    background: #ffc900;
-    margin: -175px 0 0 -175px;
+    margin: -205px 0 0 -175px;
     opacity: 0;
+    background-image: url(../img/load_site.png);
+    background-position: 0 0;
+    background-repeat: repeat-y;
 }
 
 #loading-init-overlay .loading-logo {
@@ -2120,6 +2122,6 @@ a.jp-volume-max:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: 178px 0 0 -159px;
+    margin: 172px 0 0 -159px;
     opacity: 0;
 }
