@@ -11,8 +11,6 @@ var common = {
                 $('#loading-init-overlay .loader').css({
                     backgroundPosition: '0 -' + (common.anim_pos * 357) + 'px'
                 });
-
-                console.log(common.anim_pos)
             }, 41);
         }
 
