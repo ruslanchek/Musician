@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-02-10 15:29:49
+<?php /* Smarty version Smarty 3.1.4, created on 2014-02-19 01:06:46
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/instruments.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:102176115552ea255fbcb0f7-88679357%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'de7ffc28c02b040d2b255f7acaecf60e3a972ad3' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/instruments.tpl',
-      1 => 1392031738,
+      1 => 1392042453,
       2 => 'file',
     ),
   ),
@@ -48,7 +48,8 @@ $_smarty_tpl->tpl_vars['instrument']->_loop = true;
 " data-id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
 ">
         <div class="instrument-wrapper">
-            <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
+            <img alt="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['name'];?>
+" src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
 <?php echo $_smarty_tpl->tpl_vars['image']->value['name'];?>
 .<?php echo $_smarty_tpl->tpl_vars['image']->value['extension'];?>
 "/>
@@ -80,7 +81,9 @@ $_smarty_tpl->tpl_vars['ig']->_loop = true;
  $_smarty_tpl->tpl_vars['ig']->first = $_smarty_tpl->tpl_vars['ig']->index === 0;
  $_smarty_tpl->tpl_vars['smarty']->value['foreach']['instrument_gallery']['first'] = $_smarty_tpl->tpl_vars['ig']->first;
 ?>
-        <img data-instrument_id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
+        <img alt="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['instrument']->value['name'], ENT_QUOTES, 'UTF-8', true);?>
+ - <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['ig']->value['id'], ENT_QUOTES, 'UTF-8', true);?>
+" data-instrument_id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
 " data-image_id="<?php echo $_smarty_tpl->tpl_vars['ig']->value['id'];?>
 " class="<?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['instrument_gallery']['first']){?>active<?php }?> instrument-big-image" src="<?php echo $_smarty_tpl->tpl_vars['ig']->value['path'];?>
 <?php echo $_smarty_tpl->tpl_vars['ig']->value['name'];?>
@@ -108,7 +111,9 @@ $_smarty_tpl->tpl_vars['ig']->_loop = true;
                 <div data-instrument_id="<?php echo $_smarty_tpl->tpl_vars['instrument']->value['id'];?>
 " data-image_id="<?php echo $_smarty_tpl->tpl_vars['ig']->value['id'];?>
 " class="<?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['instrument_gallery_preview']['first']){?>active<?php }?> instruments-preview-item">
-                    <img src="<?php echo $_smarty_tpl->tpl_vars['ig']->value['path'];?>
+                    <img alt="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['instrument']->value['name'], ENT_QUOTES, 'UTF-8', true);?>
+ - <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['ig']->value['id'], ENT_QUOTES, 'UTF-8', true);?>
+" src="<?php echo $_smarty_tpl->tpl_vars['ig']->value['path'];?>
 <?php echo $_smarty_tpl->tpl_vars['ig']->value['name'];?>
 _mini.<?php echo $_smarty_tpl->tpl_vars['ig']->value['extension'];?>
 "/>

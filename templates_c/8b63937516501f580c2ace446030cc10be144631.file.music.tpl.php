@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-02-06 20:46:58
+<?php /* Smarty version Smarty 3.1.4, created on 2014-02-19 01:06:46
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/music.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10167222952ea255fa09536-05267576%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b63937516501f580c2ace446030cc10be144631' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/music.tpl',
-      1 => 1391705061,
+      1 => 1392042413,
       2 => 'file',
     ),
   ),
@@ -37,7 +37,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="video-player-splash">
                 <a class="video-play-button" href="#" data-id="<?php echo $_smarty_tpl->tpl_vars['videos']->value[0]['id'];?>
 "></a>
-                <img id="current-video-img" src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
+                <img alt="<?php echo $_smarty_tpl->tpl_vars['image']->value['name'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['image']->value['id'];?>
+" id="current-video-img" src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
 <?php echo $_smarty_tpl->tpl_vars['image']->value['name'];?>
 .<?php echo $_smarty_tpl->tpl_vars['image']->value['extension'];?>
 " width="453" height="345" />
@@ -122,7 +124,9 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 "
                     class="video-preview-item<?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['videos']['first']){?> current-item<?php }?>">
 
-                    <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
+                    <img alt="<?php echo $_smarty_tpl->tpl_vars['item']->value['name'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+" src="<?php echo $_smarty_tpl->tpl_vars['image']->value['path'];?>
 <?php echo $_smarty_tpl->tpl_vars['image']->value['name'];?>
 _pic.<?php echo $_smarty_tpl->tpl_vars['image']->value['extension'];?>
 "/>

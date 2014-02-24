@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-02-10 15:42:00
+<?php /* Smarty version Smarty 3.1.4, created on 2014-02-19 01:06:46
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/media.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:213397514552ea255fb89593-60202869%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3df78ef496a7c92bbe519b3871ff704e2663bd61' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/media.tpl',
-      1 => 1392032519,
+      1 => 1392042261,
       2 => 'file',
     ),
   ),
@@ -32,7 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <script id="media-list-items" type="text/x-handlebars-template">
         {{#each items}}
-        <div class="item"><a href="{{this.path}}{{this.name}}.{{this.extension}}"><img src="{{this.path}}{{this.name}}_pic.{{this.extension}}"/></a></div>
+        <div class="item"><a href="{{this.path}}{{this.name}}.{{this.extension}}"><img alt="Gallery" src="{{this.path}}{{this.name}}_pic.{{this.extension}}"/></a></div>
         {{/each}}
     </script>
 
