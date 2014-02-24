@@ -814,14 +814,27 @@ a.jp-volume-max:hover {
     height: 71px;
     margin-bottom: 10px;
     margin-right: 15px;
+    position: relative;
 }
 
 .large-play-button i {
-    background: url('../img/social-icons.png') no-repeat -30px -50px;
+    background: url('../img/music_1.png');
     width: 71px;
     height: 71px;
     display: block;
+
 }
+.large-play-button span {
+    background: url('../img/music_2.png');
+    width: 71px;
+    height: 71px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
 
 .large-play-button.rotating i {
     -webkit-transition-property: -webkit-transform;
@@ -1547,10 +1560,10 @@ a.jp-volume-max:hover {
 
 /* @group Viewport */
 #loading-global {
-    background: rgba(252, 207, 68, 1);
+    background: url(../img/load_pages.png);
     opacity: 0;
-    height: 160px;
-    width: 160px;
+    height: 123px;
+    width: 123px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1559,8 +1572,6 @@ a.jp-volume-max:hover {
     line-height: 100px;
     text-align: center;
     display: none;
-    color: #000;
-    border-radius: 100px;
 }
 
 /* @end */
@@ -1673,228 +1684,6 @@ a.jp-volume-max:hover {
 
 /* @end */
 
-/* @group Loading animation */
-#floatingBarsG {
-    position: relative;
-    width: 81px;
-    height: 100px;
-    margin: 0 auto;
-    top: 29px;
-}
-
-.blockG {
-    position: absolute;
-    background-color: #FCCE44;
-    width: 13px;
-    height: 31px;
-    -moz-border-radius: 11px 11px 0 0;
-    -moz-transform: scale(0.4);
-    -moz-animation-name: fadeG;
-    -moz-animation-duration: 0.4s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-direction: linear;
-    -webkit-border-radius: 11px 11px 0 0;
-    -webkit-transform: scale(0.4);
-    -webkit-animation-name: fadeG;
-    -webkit-animation-duration: 0.4s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: linear;
-    -ms-border-radius: 11px 11px 0 0;
-    -ms-transform: scale(0.4);
-    -ms-animation-name: fadeG;
-    -ms-animation-duration: 0.4s;
-    -ms-animation-iteration-count: infinite;
-    -ms-animation-direction: linear;
-    -o-border-radius: 11px 11px 0 0;
-    -o-transform: scale(0.4);
-    -o-animation-name: fadeG;
-    -o-animation-duration: 0.4s;
-    -o-animation-iteration-count: infinite;
-    -o-animation-direction: linear;
-    border-radius: 11px 11px 0 0;
-    transform: scale(0.4);
-    animation-name: fadeG;
-    animation-duration: 0.4s;
-    animation-iteration-count: infinite;
-    animation-direction: linear;
-}
-
-#rotateG_01 {
-    left: 0;
-    top: 36px;
-    -moz-animation-delay: 0.15s;
-    -moz-transform: rotate(-90deg);
-    -webkit-animation-delay: 0.15s;
-    -webkit-transform: rotate(-90deg);
-    -ms-animation-delay: 0.15s;
-    -ms-transform: rotate(-90deg);
-    -o-animation-delay: 0.15s;
-    -o-transform: rotate(-90deg);
-    animation-delay: 0.15s;
-    transform: rotate(-90deg);
-}
-
-#rotateG_02 {
-    left: 10px;
-    top: 13px;
-    -moz-animation-delay: 0.2s;
-    -moz-transform: rotate(-45deg);
-    -webkit-animation-delay: 0.2s;
-    -webkit-transform: rotate(-45deg);
-    -ms-animation-delay: 0.2s;
-    -ms-transform: rotate(-45deg);
-    -o-animation-delay: 0.2s;
-    -o-transform: rotate(-45deg);
-    animation-delay: 0.2s;
-    transform: rotate(-45deg);
-}
-
-#rotateG_03 {
-    left: 34px;
-    top: 4px;
-    -moz-animation-delay: 0.25s;
-    -moz-transform: rotate(0deg);
-    -webkit-animation-delay: 0.25s;
-    -webkit-transform: rotate(0deg);
-    -ms-animation-delay: 0.25s;
-    -ms-transform: rotate(0deg);
-    -o-animation-delay: 0.25s;
-    -o-transform: rotate(0deg);
-    animation-delay: 0.25s;
-    transform: rotate(0deg);
-}
-
-#rotateG_04 {
-    right: 10px;
-    top: 13px;
-    -moz-animation-delay: 0.3s;
-    -moz-transform: rotate(45deg);
-    -webkit-animation-delay: 0.3s;
-    -webkit-transform: rotate(45deg);
-    -ms-animation-delay: 0.3s;
-    -ms-transform: rotate(45deg);
-    -o-animation-delay: 0.3s;
-    -o-transform: rotate(45deg);
-    animation-delay: 0.3s;
-    transform: rotate(45deg);
-}
-
-#rotateG_05 {
-    right: 0;
-    top: 36px;
-    -moz-animation-delay: 0.35s;
-    -moz-transform: rotate(90deg);
-    -webkit-animation-delay: 0.35s;
-    -webkit-transform: rotate(90deg);
-    -ms-animation-delay: 0.35s;
-    -ms-transform: rotate(90deg);
-    -o-animation-delay: 0.35s;
-    -o-transform: rotate(90deg);
-    animation-delay: 0.35s;
-    transform: rotate(90deg);
-}
-
-#rotateG_06 {
-    right: 10px;
-    bottom: 9px;
-    -moz-animation-delay: 0.4s;
-    -moz-transform: rotate(135deg);
-    -webkit-animation-delay: 0.4s;
-    -webkit-transform: rotate(135deg);
-    -ms-animation-delay: 0.4s;
-    -ms-transform: rotate(135deg);
-    -o-animation-delay: 0.4s;
-    -o-transform: rotate(135deg);
-    animation-delay: 0.4s;
-    transform: rotate(135deg);
-}
-
-#rotateG_07 {
-    bottom: 0;
-    left: 34px;
-    -moz-animation-delay: 0.45s;
-    -moz-transform: rotate(180deg);
-    -webkit-animation-delay: 0.45s;
-    -webkit-transform: rotate(180deg);
-    -ms-animation-delay: 0.45s;
-    -ms-transform: rotate(180deg);
-    -o-animation-delay: 0.45s;
-    -o-transform: rotate(180deg);
-    animation-delay: 0.45s;
-    transform: rotate(180deg);
-}
-
-#rotateG_08 {
-    left: 10px;
-    bottom: 9px;
-    -moz-animation-delay: 0.5s;
-    -moz-transform: rotate(-135deg);
-    -webkit-animation-delay: 0.5s;
-    -webkit-transform: rotate(-135deg);
-    -ms-animation-delay: 0.5s;
-    -ms-transform: rotate(-135deg);
-    -o-animation-delay: 0.5s;
-    -o-transform: rotate(-135deg);
-    animation-delay: 0.5s;
-    transform: rotate(-135deg);
-}
-
-@-moz-keyframes fadeG {
-    0% {
-        background-color: #000000
-    }
-
-    100% {
-        background-color: #FCCE44
-    }
-
-}
-
-@-webkit-keyframes fadeG {
-    0% {
-        background-color: #000000
-    }
-
-    100% {
-        background-color: #FCCE44
-    }
-
-}
-
-@-ms-keyframes fadeG {
-    0% {
-        background-color: #000000
-    }
-
-    100% {
-        background-color: #FCCE44
-    }
-
-}
-
-@-o-keyframes fadeG {
-    0% {
-        background-color: #000000
-    }
-
-    100% {
-        background-color: #FCCE44
-    }
-
-}
-
-@keyframes fadeG {
-    0% {
-        background-color: #000000
-    }
-
-    100% {
-        background-color: #FCCE44
-    }
-
-}
-
-/* @end */
 
 /* @group Loading animation */
 .customSelector-select {
@@ -2085,9 +1874,43 @@ a.jp-volume-max:hover {
 
 .vjs-default-skin .vjs-play-progress,
 .vjs-default-skin .vjs-volume-level {
-    background-color: #ffc900
+    background-color: #ffc900;
 }
 
 .vjs-default-skin .vjs-control-bar {
-    font-size: 115%
+    font-size: 115%;
+}
+
+#loading-init-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10000;
+    background: #070604;
+    top: 0;
+    left: 0;
+}
+
+#loading-init-overlay .loader {
+    position: absolute;
+    width: 340px;
+    height: 357px;
+    top: 50%;
+    left: 50%;
+    margin: -205px 0 0 -175px;
+    opacity: 0;
+    background-image: url(../img/load_site.png);
+    background-position: 0 0;
+    background-repeat: repeat-y;
+}
+
+#loading-init-overlay .loading-logo {
+    background: url(../img/loading-logo.png);
+    width: 317px;
+    height: 71px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 172px 0 0 -159px;
+    opacity: 0;
 }

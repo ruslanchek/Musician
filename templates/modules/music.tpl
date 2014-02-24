@@ -73,6 +73,7 @@
         <div id="jp_container_1" class="jp-audio">
             <div class="jp-type-single">
                 <div class="large-play-button">
+                    <span></span>
                     <i></i>
                 </div>
 

@@ -7,7 +7,6 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/blue.monday/jplayer.blue.monday.css"/>
 <link rel="stylesheet" type="text/css" href="/resources/css/styles.css">
 <link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/4.3/video-js.css">
-<link rel="stylesheet" type="text/css" href="/resources/tweet/jquery.tweet.css">
 
 <link rel="prefetch" href="/music" />
 <link rel="prerender" href="/music" />
@@ -20,10 +19,10 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
 <script src="/resources/js/jquery.imagesloaded.js"></script>
+<script src="/resources/js/jquery.waitforimages.min.js"></script>
 <script src="/resources/js/jquery.wookmark.min.js"></script>
 <script src="/resources/js/handlebars-v1.3.0.js"></script>
 <script src="/resources/js/jquery.jplayer.min.js"></script>
-<script src="/resources/tweet/jquery.tweet.js"></script>
 <script src="/resources/js/path.js"></script>
 <script src="/resources/js/select.js"></script>
 <script src="/resources/js/common.js"></script>

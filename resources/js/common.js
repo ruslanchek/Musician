@@ -1,6 +1,141 @@
 var common = {
     loading_pool: {},
     global_loading_interval: null,
+    anim_pos: 0,
+
+    setInitLoading: function(){
+        function startAnimation(){
+            common.lai = setInterval(function(){
+                common.anim_pos++;
+
+                $('#loading-init-overlay .loader').css({
+                    backgroundPosition: '0 -' + (common.anim_pos * 357) + 'px'
+                });
+            }, 41);
+        }
+
+        var html = '<div id="loading-init-overlay"><div class="loading-logo"></div><div class="loader"></div></div>';
+        $('body').prepend(html);
+        $('.viewport').hide();
+
+        $('#loading-init-overlay').find('.loading-logo, .loader').animate({
+            opacity: 1
+        }, 1200);
+
+        $('#loading-init-overlay').find('.loading-logo, .loader').waitForImages({
+            finished: function() {
+                startAnimation();
+            },
+            each: function() {
+
+            },
+            waitForAll: true
+        });
+
+        $('body').waitForImages({
+            finished: function() {
+                setTimeout(function(){
+                    common.hideInitLoading();
+                }, 500);
+            },
+            each: function() {
+
+            },
+            waitForAll: true
+        });
+    },
+
+    hideInitLoading: function(){
+        $('.viewport').show();
+
+        $('#loading-init-overlay .loader').animate({
+            opacity: 0,
+            top: -1000
+        }, 800);
+
+        setTimeout(function(){
+            $('#loading-init-overlay .loading-logo').animate({
+                opacity: 0,
+                top: 2000
+            }, 1200);
+
+            setTimeout(function(){
+                $('#loading-init-overlay').fadeOut(400);
+                clearInterval(common.lai);
+            }, 1200);
+        }, 200);
+    },
+
+    humanizeDate: function (date, output_with_time) {
+        if (!date) {
+            return '&mdash;';
+        }
+
+        if (!(Object.prototype.toString.call(date) === "[object Date]")) {
+            var t = date.split('.');
+
+            date = new Date((t[1] + '-' + t[0] + '-' + t[2]));
+        }
+
+        var h_date,
+            month_names = [
+                'января',
+                'февраля',
+                'марта',
+                'апреля',
+                'мая',
+                'июня',
+                'июля',
+                'августа',
+                'сентября',
+                'октября',
+                'ноября',
+                'декабря'
+            ];
+
+        var d = date.getDate(),
+            M = date.getMonth(),
+            Y = date.getFullYear();
+
+        h_date = d + ' ' + month_names[M] + ' ' + Y;
+
+        if (output_with_time === true) {
+            var H = date.getHours(),
+                i = date.getMinutes(),
+                s = date.getSeconds();
+
+            if (i < 10) {
+                i = '0' + i;
+            }
+
+            if (s < 10) {
+                s = '0' + s;
+            }
+
+            h_date = h_date + ', ' + H + ':' + i + ':' + s;
+        }
+
+        return h_date;
+    },
+
+    getTweets: function(){
+        $.ajax({
+            url: '/?ajax&action=getTweets',
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+                var html = '';
+
+                for(var i = 0, l = data.length; i < l; i++){
+                    var date = common.humanizeDate(new Date(data[i].created_at));
+
+                    html += '<p><span class="date">' + date + '</span>  ' + data[i].text + '</p>';
+                }
+
+                $('.tweets').html(html);
+            }
+        });
+    },
 
     iterateObjects: function(selector, interval, doIt){
         var i = 0;
@@ -16,7 +151,7 @@ var common = {
         });
     },
 
-    unSetGlobalLoading: function (name) {
+    unSetGlobalLoading: function (name, cb) {
         setTimeout(function () {
             if (name && common.loading_pool[name]) {
                 delete(common.loading_pool[name]);
@@ -41,19 +176,33 @@ var common = {
                         clearInterval(common.global_loading_interval);
                     }
 
-                    $('#loading-global').css({ display: 'none' })
+                    $('#loading-global').css({ display: 'none' });
+
+                    if(cb){
+                        cb();
+                    }
                 }
             });
         }, 350);
     },
 
     setGlobalLoading: function (name) {
+        this.site_loading_i = 0;
+
+        this.global_loading_interval = setInterval(function(){
+            common.site_loading_i++;
+
+            $('#loading-global').css({
+                backgroundPosition: '0 -' + (common.site_loading_i * 123) + 'px'
+            });
+        }, 80);
+
         if (name) {
             this.loading_pool[name] = true;
         }
 
         $('#loading-global').css({ display: 'block' }).animate({
-            opacity: 0.85
+            opacity: 1
         }, {
             duration: 150
         });
@@ -109,12 +258,9 @@ var common = {
         });
     },
 
-    renderTweets: function(){
-
-    },
-
     init: function(){
-        this.renderTweets();
+        this.getTweets();
+        this.setInitLoading();
     }
 };
 
@@ -238,77 +384,84 @@ modules.media = {
                 common.setGlobalLoading('media');
             },
             success: function(data){
-                var $nc = $('#media-content>#photo');
+                common.unSetGlobalLoading('media', function(){
+                    var $nc = $('#media-content>#photo');
 
-                $nc.html(
-                    Handlebars.compile($("#media-list-items").html())({
-                        items: data.items
-                    })
-                );
+                    $nc.html(
+                        Handlebars.compile($("#media-list-items").html())({
+                            items: data.items
+                        })
+                    );
 
-                $('#media-content>#photo').imagesLoaded(function() {
-                    $('#photo .item').wookmark({
-                        autoResize: false,
-                        container: $('#media-content>#photo'),
-                        offset: 30,
-                        itemWidth: 245,
-                        flexibleWidth: true,
-                        fillEmptySpace: true
-                    });
-
-                    common.unSetGlobalLoading('media');
-
-                    setTimeout(function(){
-                        common.iterateObjects('#photo .item', 35, function($this){
-                            $this.addClass('ready');
+                    $('#media-content>#photo').imagesLoaded(function() {
+                        $('#photo .item').wookmark({
+                            autoResize: false,
+                            container: $('#media-content>#photo'),
+                            offset: 30,
+                            itemWidth: 245,
+                            flexibleWidth: true,
+                            fillEmptySpace: true
                         });
-                    }, 400); // Delay to avoid loading animation intersection
-
-                    $('#photo .item').on('click', function(e){
-                        e.preventDefault();
-                        common.iterateObjects('#photo .item', 35, function($this){
-                            $this.removeClass('ready');
-                        });
-
-                        $('#media-pager').hide();
-
-                        var src = $(this).find('a').attr('href');
 
                         setTimeout(function(){
-                            $('#photo').append(Handlebars.compile($("#media-list-item").html())({
-                                src: src
-                            }));
+                            common.iterateObjects('#photo .item', 35, function($this){
+                                $this.addClass('ready');
+                            });
+                        }, 400); // Delay to avoid loading animation intersection
 
-                            setTimeout(function(){
-                                $('.social-item-open-gallery').addClass('ready');
-                            }, 100);
+                        $('#photo .item').on('click', function(e){
+                            e.preventDefault();
 
-                            $('.social-item-open-gallery .close').on('click', function(e){
-                                e.preventDefault();
-                                $('.social-item-open-gallery').removeClass('ready');
-
-                                setTimeout(function(){
-                                    $('.social-item-open-gallery').remove();
-
-                                    common.iterateObjects('#photo .item', 35, function($this){
-                                        $this.addClass('ready');
-                                    });
-
-                                    $('#media-pager').show();
-                                }, 200);
+                            common.iterateObjects('#photo .item', 35, function($this){
+                                $this.removeClass('ready');
                             });
 
-                        }, 300);
-                    });
-                });
+                            $('#media-pager').hide();
 
-                common.generatePager({
-                    selector: '#media-pager',
-                    total_pages: data.pager.total_pages,
-                    current_page: page,
-                    onSelect: function(page){
-                        modules.media.loadItems(page);
-                    }
+                            var src = $(this).find('a').attr('href');
+
+                            setTimeout(function(){
+                                $('#photo').append(Handlebars.compile($("#media-list-item").html())({
+                                    src: src
+                                }));
+
+                                setTimeout(function(){
+                                    $('.social-item-open-gallery').addClass('ready');
+                                }, 100);
+
+                                $('.social-item-open-gallery .close').on('click', function(e){
+                                    e.preventDefault();
+                                    $('.social-item-open-gallery').removeClass('ready');
+
+                                    setTimeout(function(){
+                                        $('.social-item-open-gallery').remove();
+
+                                        common.iterateObjects('#photo .item', 35, function($this){
+                                            $this.addClass('ready');
+                                        });
+
+                                        $('#media-pager').show();
+                                    }, 200);
+                                });
+
+                            }, 300);
+                        });
+                    });
+
+                    common.generatePager({
+                        selector: '#media-pager',
+                        total_pages: data.pager.total_pages,
+                        current_page: page,
+                        onSelect: function(page){
+                            common.iterateObjects('#photo .item', 35, function($this){
+                                $this.removeClass('ready');
+                            });
+
+                            setTimeout(function(){
+                                modules.media.loadItems(page);
+                            }, 400);
+                        }
+                    });
                 });
             }
         });
@@ -579,68 +732,6 @@ modules.instruments = {
             modules.instruments.openInstrument($(this).data('id'));
         });
 
-        $(".instrument-item:first").animate({
-            crSpline: $.crSpline.buildSequence([
-                1.1328125,
-                45.1171875,
-                38.9414063,
-                179.300781,
-                188.953125,
-                330.539062,
-                188.953125,
-                330.539062,
-                188.953125,
-                330.539062,
-                644.179687,
-                642.171876,
-                533.71875,
-                432.847656,
-                423.257812,
-                223.523437,
-                597.285156,
-                351.78125,
-                597.285156,
-                351.78125,
-                597.285156,
-                351.78125,
-                749.777344,
-                167.664062,
-                564.441406,
-                167.664062,
-                379.105469,
-                167.664062,
-                320.242184,
-                159.35547,
-                352.863281,
-                225.335938,
-                385.484375,
-                291.316406,
-                195.406256,
-                324.488282,
-                217.679688,
-                214.957031,
-                239.953125,
-                105.425781,
-                213.003909,
-                44.3789032,
-                277.761719,
-                70.3242188,
-                342.519531,
-                96.2695312,
-                378.367184,
-                203.027343,
-                396.898438,
-                121.476562,
-                415.429688,
-                39.9257812,
-                306.449219,
-                0.9296875,
-                306.449219,
-                0.9296875
-            ]),
-            duration: 50000
-        });
-
         $('.instruments-preview .instruments-preview-item').on('click', function(e){
             e.preventDefault();
 
@@ -653,7 +744,7 @@ modules.instruments = {
         $('.instrument-big-image').on('click', function(e){
             $('.full-descr[data-instrument_id="' + modules.instruments.current_instrument_id + '"]').fadeIn(200);
             $('.full-descr .close').on('click', function(e){
-                $('.full-descr').fadeOut(200)
+                $('.full-descr').fadeOut(200);
             });
         });
     }
@@ -697,7 +788,7 @@ modules.contacts = {
             modules.contacts.send();
         });
     }
-}
+};
 
 $(function(){
     common.init();

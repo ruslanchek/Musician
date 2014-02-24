@@ -28,7 +28,7 @@
                                     ),
 
 		//DB vars
-		'db_host'                   => 'localhost',
+		'db_host'                   => 'fortyfour.ru',
 		'db_base'                   => 'musician',
 		'db_user'                   => 'fortyfour',
 		'db_pass'                   => 'W8zXGYPa'
