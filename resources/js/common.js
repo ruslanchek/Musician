@@ -508,7 +508,9 @@ modules.music = {
     },
 
     stop: function(){
-        this.player.jPlayer('stop');
+        if(this.player){
+            this.player.jPlayer('stop');
+        }
     },
 
     setTrack: function(id){

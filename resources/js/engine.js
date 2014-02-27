@@ -85,6 +85,9 @@ var WPEngine = {
             delay = 0;
 
         if (pane_data) {
+            modules.music.stop();
+            modules.music.stopAllVideos();
+
             this.setFocusPoint(
                 pane_data.offset_x,
                 pane_data.offset_y,
@@ -121,7 +124,8 @@ var WPEngine = {
 
                 $('.cl-pane').not($pane_content).css({
                     opacity: 0,
-                    display: 'none'
+                    display: 'none',
+                    height: _this.min_height
                 });
 
                 if(modules[pane] && modules[pane].init){
@@ -222,6 +226,16 @@ var WPEngine = {
             if(_this.moy_stop === false){
                 _this.moy += e.clientY - _this.goy;
             }
+        });
+
+        $('.cl-pane-content').hover(function(){
+            $('html').css({
+                cursor: ''
+            });
+        }, function(){
+            $('html').css({
+                cursor: 'move'
+            });
         });
     },
 
