@@ -5,6 +5,8 @@
     </head>
 
     <body>
+        <div id="objectc" style="width: 100px; height: 100px; background: red; position: absolute; z-index: 1000000"></div>
+
         {include file="include/common/header.tpl"}
 
         <div class="viewport" id="ewp-viewport">

@@ -18,14 +18,11 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
-<script src="/resources/edge/tb_edgePreload.js"></script>
-
 <script src="/resources/js/jquery.imagesloaded.js"></script>
 <script src="/resources/js/jquery.waitforimages.min.js"></script>
 <script src="/resources/js/jquery.wookmark.min.js"></script>
 <script src="/resources/js/handlebars-v1.3.0.js"></script>
 <script src="/resources/js/jquery.jplayer.min.js"></script>
-<script src="/resources/js/path.js"></script>
 <script src="/resources/js/select.js"></script>
 <script src="/resources/js/common.js"></script>
 <script src="/resources/js/engine.js"></script>

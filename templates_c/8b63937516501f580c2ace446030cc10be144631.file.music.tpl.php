@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-02-19 01:06:46
+<?php /* Smarty version Smarty 3.1.4, created on 2014-03-01 15:50:16
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/music.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10167222952ea255fa09536-05267576%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b63937516501f580c2ace446030cc10be144631' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/modules/music.tpl',
-      1 => 1392042413,
+      1 => 1393274643,
       2 => 'file',
     ),
   ),
@@ -153,6 +153,7 @@ _pic.<?php echo $_smarty_tpl->tpl_vars['image']->value['extension'];?>
         <div id="jp_container_1" class="jp-audio">
             <div class="jp-type-single">
                 <div class="large-play-button">
+                    <span></span>
                     <i></i>
                 </div>
 

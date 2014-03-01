@@ -793,5 +793,8 @@ modules.contacts = {
 };
 
 $(function(){
+
+
+
     common.init();
 });

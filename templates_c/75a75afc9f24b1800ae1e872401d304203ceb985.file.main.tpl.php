@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.4, created on 2014-01-30 14:13:21
+<?php /* Smarty version Smarty 3.1.4, created on 2014-03-01 15:50:16
          compiled from "/Volumes/Black/Users/Ruslan/Sites/musician/templates/main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:75096343552ea0c56e1d005-65796091%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '75a75afc9f24b1800ae1e872401d304203ceb985' => 
     array (
       0 => '/Volumes/Black/Users/Ruslan/Sites/musician/templates/main.tpl',
-      1 => 1391076799,
+      1 => 1393674565,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </head>
 
     <body>
+        <div id="objectc" style="width: 100px; height: 100px; background: red; position: absolute; z-index: 1000000"></div>
+
         <?php echo $_smarty_tpl->getSubTemplate ("include/common/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 
